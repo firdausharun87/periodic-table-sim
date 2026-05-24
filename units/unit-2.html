@@ -1,58 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 2: Size Matters | Periodic Table SIM</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/styles.css">
-</head>
-<body data-page="unit-2">
+/* ============================================================
+   sidebar.js
+   Renders the shared sidebar across all pages and updates it
+   based on saved progress from localStorage.
+   ============================================================ */
 
-<div class="app">
+const SIDEBAR_UNITS = [
+  { id: 1, slug: 'unit-1', title: 'Where Does an Element Belong?', recommend: 'Start here', quizzes: ['prereq-1', 'practice-1', 'practice-2', 'practice-3'] },
+  { id: 2, slug: 'unit-2', title: 'Size Matters — Atomic & Ionic Radii', quizzes: ['u2-prereq-1','u2-practice-1','u2-practice-2','u2-practice-3','u2-practice-4'] },
+  { id: 3, slug: 'unit-3', title: 'Energy to Break Free — Ionisation Energy', quizzes: [] },
+  { id: 4, slug: 'unit-4', title: 'Electronegativity & Oxide Behaviour', quizzes: [] }
+];
 
-  <aside class="sidebar" id="sidebar"></aside>
+function relativePath(target) {
+  // Determine path prefix based on current page location
+  const path = window.location.pathname;
+  const inUnitsFolder = path.includes('/units/');
+  return inUnitsFolder ? '../' + target : target;
+}
 
-  <main class="main">
+function renderSidebar(activePageId) {
+  const state = ProgressTracker.getState();
 
-    <div class="unit-header">
-      <div class="breadcrumb">
-        <a href="../index.html">Course Home</a>
-        <span class="breadcrumb-sep">/</span>
-        <span>Unit 02</span>
-      </div>
-      <div class="unit-header-grid">
-        <div>
-          <h1 class="unit-title">Size <em>Matters</em></h1>
-          <p class="unit-deck">Atomic & ionic radii — coming soon in v0.2.</p>
-        </div>
-      </div>
+  // Determine status for each unit
+  const unitStatusItems = SIDEBAR_UNITS.map(unit => {
+    let statusHtml = '<span class="unit-nav-status locked-icon">○</span>';
+
+    if (unit.quizzes.length > 0) {
+      const completed = unit.quizzes.filter(q => state.quizzes[q] === 'correct').length;
+      const total = unit.quizzes.length;
+      if (completed === total) {
+        statusHtml = '<span class="unit-nav-status complete">✓</span>';
+      } else if (completed > 0) {
+        statusHtml = '<span class="unit-nav-status in-progress">·</span>';
+      } else {
+        statusHtml = '<span class="unit-nav-status">·</span>';
+      }
+    }
+
+    const isActive = activePageId === unit.slug;
+    const recommendHtml = unit.recommend
+      ? `<div class="unit-nav-recommend">${unit.recommend}</div>`
+      : '';
+
+    const unitHref = relativePath(`units/${unit.slug}.html`);
+    const unitNum = String(unit.id).padStart(2, '0');
+
+    return `
+      <li>
+        <a class="unit-nav-item${isActive ? ' active' : ''}" href="${unitHref}">
+          <div class="unit-nav-row">
+            <span class="unit-nav-num">Unit ${unitNum}</span>
+            ${statusHtml}
+          </div>
+          <div class="unit-nav-title">${unit.title}</div>
+          ${recommendHtml}
+        </a>
+      </li>
+    `;
+  }).join('');
+
+  const homeHref = relativePath('index.html');
+  const homeActive = activePageId === 'landing' ? ' active' : '';
+
+  const sidebarHtml = `
+    <div class="sidebar-brand">
+      <a href="${homeHref}">
+        <div class="sidebar-brand-tag">Chemistry EC015 · Topic 3</div>
+        <div class="sidebar-brand-title">Periodic Table</div>
+        <div class="sidebar-brand-sub">A Self-Instructional Module</div>
+      </a>
     </div>
 
-    <div class="unit-content">
-      <div class="callout">
-        <div class="callout-label">In Development</div>
-        <p>This unit is part of the planned build but not yet authored. The MVP focuses on validating the SIM structure with Unit 1 first.</p>
-      </div>
+    <div class="sidebar-section-label">Navigation</div>
+    <ul class="unit-nav">
+      <li>
+        <a class="unit-nav-item${homeActive}" href="${homeHref}">
+          <div class="unit-nav-row">
+            <span class="unit-nav-num">— Overview</span>
+          </div>
+          <div class="unit-nav-title">Course Home</div>
+        </a>
+      </li>
+      ${unitStatusItems}
+    </ul>
+
+    <div class="sidebar-footer">
+      Built for KMKK Chemistry Unit · Aligned to PSPM<br>
+      <div class="sidebar-footer-meta">v0.1 · MVP</div>
     </div>
+  `;
 
-    <div class="unit-nav-footer">
-      <a class="btn btn-secondary" href="unit-1.html">← Back to Unit 1</a>
-      <a class="btn btn-primary" href="unit-3.html">Continue to Unit 3 →</a>
-    </div>
-
-  </main>
-</div>
-
-<script src="../assets/js/progress.js"></script>
-<script src="../assets/js/sidebar.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    renderSidebar('unit-2');
-  });
-</script>
-
-</body>
-</html>
+  const sidebarEl = document.getElementById('sidebar');
+  if (sidebarEl) {
+    sidebarEl.innerHTML = sidebarHtml;
+  }
+}
