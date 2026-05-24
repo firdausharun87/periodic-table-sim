@@ -6,7 +6,7 @@
 
 const SIDEBAR_UNITS = [
   { id: 1, slug: 'unit-1', title: 'Where Does an Element Belong?', recommend: 'Start here', quizzes: ['prereq-1', 'practice-1', 'practice-2', 'practice-3'] },
-  { id: 2, slug: 'unit-2', title: 'Size Matters — Atomic & Ionic Radii', quizzes: [] },
+  { id: 2, slug: 'unit-2', title: 'Size Matters — Atomic & Ionic Radii', quizzes: ['u2-prereq-1','u2-practice-1','u2-practice-2','u2-practice-3','u2-practice-4'] },
   { id: 3, slug: 'unit-3', title: 'Energy to Break Free — Ionisation Energy', quizzes: [] },
   { id: 4, slug: 'unit-4', title: 'Electronegativity & Oxide Behaviour', quizzes: [] }
 ];
