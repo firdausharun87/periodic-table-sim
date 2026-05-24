@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Periodic Table — A Self-Instructional Module | Chemistry EC015</title>
+<meta name="description" content="A self-paced module on the Periodic Table for KMKK Chemistry EC015 students, aligned to PSPM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="landing">
+
+<div class="app">
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+
+    <section class="fade-in">
+
+      <div class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-tag">Chemistry EC015 · Topic 3</div>
+            <h1 class="hero-title">The Periodic Table, <em>understood</em>.</h1>
+            <p class="hero-subtitle">
+              A self-paced module that takes you from electron configuration
+              to oxide behaviour — built around how chemists actually think,
+              not just what to memorise.
+            </p>
+
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <div class="hero-meta-num">4</div>
+                <div class="hero-meta-label">Units</div>
+              </div>
+              <div class="hero-meta-item">
+                <div class="hero-meta-num">15</div>
+                <div class="hero-meta-label">Learning Outcomes</div>
+              </div>
+              <div class="hero-meta-item">
+                <div class="hero-meta-num">~3h</div>
+                <div class="hero-meta-label">Est. Time</div>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="units/unit-1.html">
+                Start with Unit 1 →
+              </a>
+              <a class="btn btn-secondary" href="#units-section">
+                Browse Units
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <svg class="hero-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#C9C0AB" stroke-width="0.5" opacity="0.3"/>
+                </pattern>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#0F1B1F"/>
+                </marker>
+              </defs>
+              <rect width="400" height="400" fill="url(#grid)"/>
+
+              <!-- s-block -->
+              <g>
+                <rect x="40" y="80" width="50" height="160" fill="#1B4D52" opacity="0.85"/>
+                <text x="65" y="170" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="13" font-weight="600">s</text>
+              </g>
+              <!-- d-block -->
+              <g>
+                <rect x="100" y="140" width="160" height="100" fill="#C4502E" opacity="0.85"/>
+                <text x="180" y="195" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="13" font-weight="600">d</text>
+              </g>
+              <!-- p-block -->
+              <g>
+                <rect x="270" y="80" width="90" height="160" fill="#B8862F" opacity="0.85"/>
+                <text x="315" y="170" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="13" font-weight="600">p</text>
+              </g>
+              <!-- f-block -->
+              <g>
+                <rect x="100" y="260" width="220" height="40" fill="#2A7A82" opacity="0.7"/>
+                <text x="210" y="285" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="13" font-weight="600">f</text>
+              </g>
+
+              <!-- Period labels -->
+              <text x="25" y="100" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">1</text>
+              <text x="25" y="130" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">2</text>
+              <text x="25" y="160" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">3</text>
+              <text x="25" y="190" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">4</text>
+              <text x="25" y="220" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">5</text>
+
+              <!-- Period arrow -->
+              <g opacity="0.7">
+                <line x1="60" y1="60" x2="340" y2="60" stroke="#0F1B1F" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="200" y="50" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="10" letter-spacing="2">PERIODICITY →</text>
+              </g>
+
+              <!-- Group arrow -->
+              <g opacity="0.7">
+                <line x1="380" y1="80" x2="380" y2="290" stroke="#0F1B1F" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="395" y="190" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="10" letter-spacing="2" transform="rotate(90 395 190)">GROUP ↓</text>
+              </g>
+
+              <!-- Caption -->
+              <text x="200" y="350" text-anchor="middle" fill="#2A3A40" font-family="Fraunces" font-style="italic" font-size="14">The architecture of matter</text>
+              <text x="200" y="375" text-anchor="middle" fill="#9A9282" font-family="JetBrains Mono" font-size="9" letter-spacing="2">s · p · d · f</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="units-section">
+        <div class="section-label">The Four Units</div>
+        <h2 class="section-title">A path designed around how chemists understand the table.</h2>
+        <p class="section-intro">
+          Each unit builds on the last. Start at Unit 1 if you're learning this for the first time —
+          but feel free to jump anywhere if you want to revisit a specific concept.
+        </p>
+
+        <div class="unit-cards">
+          <a class="unit-card recommended" href="units/unit-1.html">
+            <div class="unit-card-header">
+              <span class="unit-card-num">Unit 01</span>
+              <span class="unit-card-badge recommended">Start here</span>
+            </div>
+            <h3 class="unit-card-title">Where Does an Element Belong?</h3>
+            <p class="unit-card-desc">
+              How electron configuration tells you exactly where an element sits in the periodic table —
+              its period, group, and block.
+            </p>
+            <div class="unit-card-meta">
+              <span>2 LOs</span>
+              <span>·</span>
+              <span>~35 min</span>
+            </div>
+          </a>
+
+          <a class="unit-card" href="units/unit-2.html">
+            <div class="unit-card-header">
+              <span class="unit-card-num">Unit 02</span>
+            </div>
+            <h3 class="unit-card-title">Size Matters — Atomic & Ionic Radii</h3>
+            <p class="unit-card-desc">
+              Why atoms get smaller across a period and larger down a group — and what happens
+              to size when atoms become ions.
+            </p>
+            <div class="unit-card-meta">
+              <span>6 LOs</span>
+              <span>·</span>
+              <span>~50 min</span>
+            </div>
+          </a>
+
+          <a class="unit-card" href="units/unit-3.html">
+            <div class="unit-card-header">
+              <span class="unit-card-num">Unit 03</span>
+            </div>
+            <h3 class="unit-card-title">Energy to Break Free — Ionisation Energy</h3>
+            <p class="unit-card-desc">
+              How tightly atoms hold onto their electrons, why some configurations resist
+              ionisation more than others, and reading the atom's group from IE data.
+            </p>
+            <div class="unit-card-meta">
+              <span>4 LOs</span>
+              <span>·</span>
+              <span>~55 min</span>
+            </div>
+          </a>
+
+          <a class="unit-card" href="units/unit-4.html">
+            <div class="unit-card-header">
+              <span class="unit-card-num">Unit 04</span>
+            </div>
+            <h3 class="unit-card-title">Electronegativity & Oxide Behaviour</h3>
+            <p class="unit-card-desc">
+              The single property that explains polar bonds, periodic trends in electron pull,
+              and why Period 3 oxides shift from basic to acidic.
+            </p>
+            <div class="unit-card-meta">
+              <span>3 LOs</span>
+              <span>·</span>
+              <span>~45 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/js/progress.js"></script>
+<script src="assets/js/sidebar.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderSidebar('landing');
+  });
+</script>
+
+</body>
+</html>
