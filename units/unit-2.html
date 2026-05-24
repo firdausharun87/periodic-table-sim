@@ -1,97 +1,868 @@
-/* ============================================================
-   sidebar.js
-   Renders the shared sidebar across all pages and updates it
-   based on saved progress from localStorage.
-   ============================================================ */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2: Size Matters — Atomic & Ionic Radii | Periodic Table SIM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body data-page="unit-2">
 
-const SIDEBAR_UNITS = [
-  { id: 1, slug: 'unit-1', title: 'Where Does an Element Belong?', recommend: 'Start here', quizzes: ['prereq-1', 'practice-1', 'practice-2', 'practice-3'] },
-  { id: 2, slug: 'unit-2', title: 'Size Matters — Atomic & Ionic Radii', quizzes: ['u2-prereq-1','u2-practice-1','u2-practice-2','u2-practice-3','u2-practice-4'] },
-  { id: 3, slug: 'unit-3', title: 'Energy to Break Free — Ionisation Energy', quizzes: [] },
-  { id: 4, slug: 'unit-4', title: 'Electronegativity & Oxide Behaviour', quizzes: [] }
-];
+<div class="app">
 
-function relativePath(target) {
-  // Determine path prefix based on current page location
-  const path = window.location.pathname;
-  const inUnitsFolder = path.includes('/units/');
-  return inUnitsFolder ? '../' + target : target;
-}
+  <aside class="sidebar" id="sidebar"></aside>
 
-function renderSidebar(activePageId) {
-  const state = ProgressTracker.getState();
+  <main class="main" data-unit-quizzes="u2-prereq-1,u2-practice-1,u2-practice-2,u2-practice-3,u2-practice-4">
 
-  // Determine status for each unit
-  const unitStatusItems = SIDEBAR_UNITS.map(unit => {
-    let statusHtml = '<span class="unit-nav-status locked-icon">○</span>';
-
-    if (unit.quizzes.length > 0) {
-      const completed = unit.quizzes.filter(q => state.quizzes[q] === 'correct').length;
-      const total = unit.quizzes.length;
-      if (completed === total) {
-        statusHtml = '<span class="unit-nav-status complete">✓</span>';
-      } else if (completed > 0) {
-        statusHtml = '<span class="unit-nav-status in-progress">·</span>';
-      } else {
-        statusHtml = '<span class="unit-nav-status">·</span>';
-      }
-    }
-
-    const isActive = activePageId === unit.slug;
-    const recommendHtml = unit.recommend
-      ? `<div class="unit-nav-recommend">${unit.recommend}</div>`
-      : '';
-
-    const unitHref = relativePath(`units/${unit.slug}.html`);
-    const unitNum = String(unit.id).padStart(2, '0');
-
-    return `
-      <li>
-        <a class="unit-nav-item${isActive ? ' active' : ''}" href="${unitHref}">
-          <div class="unit-nav-row">
-            <span class="unit-nav-num">Unit ${unitNum}</span>
-            ${statusHtml}
+    <div class="unit-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Course Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Unit 02</span>
+      </div>
+      <div class="unit-header-grid">
+        <div>
+          <h1 class="unit-title">Size <em>Matters</em></h1>
+          <p class="unit-deck">
+            Why atoms get smaller across a period and bigger down a group — and what happens
+            to size when atoms become ions.
+          </p>
+        </div>
+        <div class="progress-card">
+          <div class="progress-label">Your Progress</div>
+          <div class="progress-text" id="unit-progress-text">0 of 5 checkpoints complete</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="unit-progress-fill" style="width: 0%"></div>
           </div>
-          <div class="unit-nav-title">${unit.title}</div>
-          ${recommendHtml}
-        </a>
-      </li>
-    `;
-  }).join('');
-
-  const homeHref = relativePath('index.html');
-  const homeActive = activePageId === 'landing' ? ' active' : '';
-
-  const sidebarHtml = `
-    <div class="sidebar-brand">
-      <a href="${homeHref}">
-        <div class="sidebar-brand-tag">Chemistry EC015 · Topic 3</div>
-        <div class="sidebar-brand-title">Periodic Table</div>
-        <div class="sidebar-brand-sub">A Self-Instructional Module</div>
-      </a>
+        </div>
+      </div>
     </div>
 
-    <div class="sidebar-section-label">Navigation</div>
-    <ul class="unit-nav">
-      <li>
-        <a class="unit-nav-item${homeActive}" href="${homeHref}">
-          <div class="unit-nav-row">
-            <span class="unit-nav-num">— Overview</span>
+    <div class="unit-content">
+
+      <!-- EVENT 01: Learning Outcomes -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">01</span>
+          <span class="event-name">Learning Outcomes</span>
+        </div>
+        <h2 class="event-heading">What you'll be able to do</h2>
+        <div class="callout lo">
+          <div class="callout-label">By the end of this unit</div>
+          <ul class="lo-list">
+            <li>Describe the variation in <strong>atomic radii</strong> across a period, across the first row of transition elements, and down a group.</li>
+            <li>Analyse the variation in atomic radii of an element and its corresponding <strong>ionic radius</strong>.</li>
+            <li>Compare the atomic radius of an element with its corresponding ionic radius.</li>
+            <li>Define the term <strong>isoelectronic</strong>.</li>
+            <li>Compare the radius of isoelectronic species.</li>
+            <li>Analyse the variation in ionic radii across Period 2 and Period 3.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EVENT 02: Before You Begin -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">02</span>
+          <span class="event-name">Before You Begin</span>
+        </div>
+        <h2 class="event-heading">A quick check on prior knowledge</h2>
+        <div class="event-body">
+          <p>
+            This unit assumes you can already write the electron configuration of an atom <em>and</em> its ion.
+            Three rules from Unit 1 and Topic 2 you must be comfortable with:
+          </p>
+          <p>
+            For <strong>main group cations</strong>, electrons are removed from the outermost shell to achieve
+            a noble-gas configuration. For example, Al → Al³⁺ means removing the 3s² 3p¹ electrons.
+          </p>
+          <p>
+            For <strong>main group anions</strong>, electrons are added to the outermost shell to achieve
+            a noble-gas configuration. For example, O → O²⁻ means adding 2 electrons to the 2p subshell.
+          </p>
+          <p>
+            For <strong>transition metal cations</strong>, electrons are always removed first from the
+            <strong>ns</strong> orbital, then from the <strong>(n−1)d</strong> orbital. For example,
+            Fe → Fe²⁺ means removing the 4s² electrons first, giving [Ar] 3d⁶.
+          </p>
+        </div>
+
+        <div class="quiz" data-quiz-id="u2-prereq-1">
+          <div class="quiz-label">Quick check</div>
+          <div class="quiz-question">What is the electron configuration of Fe³⁺ (Z = 26)?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'You removed from 3d first, but for transition metals electrons are always removed from the ns orbital first, then (n−1)d.')">
+              <span class="quiz-option-letter">A</span>
+              <span>1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d³</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Fe is [Ar] 4s² 3d⁶. To form Fe³⁺, remove all 4s electrons first (2 electrons), then 1 electron from 3d. Result: [Ar] 3d⁵.')">
+              <span class="quiz-option-letter">B</span>
+              <span>1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁵</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Too few electrons removed. Fe³⁺ means 3 electrons removed total. This shows only 1 removed.')">
+              <span class="quiz-option-letter">C</span>
+              <span>1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁵</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'For transition metals, you keep electrons in (n−1)d if possible — they are not all removed. Fe³⁺ still has 5 electrons in 3d.')">
+              <span class="quiz-option-letter">D</span>
+              <span>1s² 2s² 2p⁶ 3s² 3p⁶</span>
+            </button>
           </div>
-          <div class="unit-nav-title">Course Home</div>
-        </a>
-      </li>
-      ${unitStatusItems}
-    </ul>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
 
-    <div class="sidebar-footer">
-      Built for KMKK Chemistry Unit · Aligned to PSPM<br>
-      <div class="sidebar-footer-meta">v0.1 · MVP</div>
+      <!-- EVENT 03: Three Factors -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">03</span>
+          <span class="event-name">Three Factors</span>
+        </div>
+        <h2 class="event-heading">Three factors that influence size</h2>
+        <div class="event-body">
+          <p>
+            Before explaining any trend in the periodic table, you need to understand three factors.
+            Every PSPM answer about atomic or ionic radii will be built from these three:
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <rect x="20" y="60" width="200" height="180" fill="#1B4D52" opacity="0.9" rx="2"/>
+              <text x="120" y="100" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="18" font-weight="600">Nuclear Charge</text>
+              <line x1="50" y1="115" x2="190" y2="115" stroke="#E89B7A" stroke-width="1"/>
+              <text x="120" y="145" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">The positive charge</text>
+              <text x="120" y="162" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">of the nucleus that</text>
+              <text x="120" y="179" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">pulls all electrons</text>
+              <text x="120" y="196" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">towards it.</text>
+              <text x="120" y="225" text-anchor="middle" fill="#E89B7A" font-family="JetBrains Mono" font-size="10" letter-spacing="1">= PROTON NUMBER</text>
+            </g>
+
+            <g>
+              <rect x="245" y="60" width="200" height="180" fill="#C4502E" opacity="0.9" rx="2"/>
+              <text x="345" y="92" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="17" font-weight="600">Effective Nuclear</text>
+              <text x="345" y="112" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="17" font-weight="600">Charge</text>
+              <line x1="275" y1="125" x2="415" y2="125" stroke="#F5F1E8" stroke-width="1" opacity="0.5"/>
+              <text x="345" y="150" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">The positive charge</text>
+              <text x="345" y="167" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">felt by the valence</text>
+              <text x="345" y="184" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">electrons toward</text>
+              <text x="345" y="201" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">the nucleus.</text>
+              <text x="345" y="226" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10" letter-spacing="1">Zeff = Z − inner e⁻</text>
+            </g>
+
+            <g>
+              <rect x="470" y="60" width="200" height="180" fill="#B8862F" opacity="0.9" rx="2"/>
+              <text x="570" y="92" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="17" font-weight="600">Shielding /</text>
+              <text x="570" y="112" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="17" font-weight="600">Screening Effect</text>
+              <line x1="500" y1="125" x2="640" y2="125" stroke="#F5F1E8" stroke-width="1" opacity="0.5"/>
+              <text x="570" y="150" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">Inner electrons</text>
+              <text x="570" y="167" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">shield outer electrons</text>
+              <text x="570" y="184" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">from the full nuclear</text>
+              <text x="570" y="201" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">attraction.</text>
+              <text x="570" y="226" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10" letter-spacing="1">↑ INNER e⁻ → ↑ SHIELD</text>
+            </g>
+
+            <text x="350" y="270" text-anchor="middle" fill="#2A3A40" font-family="Fraunces" font-style="italic" font-size="14">Master these three. Every trend explanation flows from them.</text>
+          </svg>
+          <div class="diagram-caption">The three factors that determine atomic and ionic size</div>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">The distinction</div>
+          <p>
+            <strong>Nuclear charge</strong> is the positive charge felt by <em>all</em> electrons (equals the proton number).
+            <strong>Effective nuclear charge</strong> is the positive charge felt by the <em>valence electrons only</em>,
+            calculated as Zeff = proton number − number of inner electrons.
+          </p>
+        </div>
+
+        <div class="event-body">
+          <p>
+            For example, sodium has a proton number of 11. Its nuclear charge is +11, felt by all 11 electrons.
+            But its <strong>effective nuclear charge</strong> is only +1, because the 10 inner electrons shield
+            the single valence electron from feeling the full +11.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 04: Atomic Radii Trends -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">04</span>
+          <span class="event-name">Atomic Radii Trends</span>
+        </div>
+        <h2 class="event-heading">How atomic radius changes across the table</h2>
+        <div class="event-body">
+          <p>
+            The <strong>atomic radius</strong> is half the distance between the two nuclei of a diatomic molecule.
+            It changes systematically as you move across the periodic table:
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arr2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#0F1B1F"/>
+              </marker>
+            </defs>
+
+            <circle cx="80" cy="120" r="38" fill="#1B4D52" opacity="0.5"/>
+            <circle cx="170" cy="120" r="32" fill="#1B4D52" opacity="0.6"/>
+            <circle cx="250" cy="120" r="26" fill="#1B4D52" opacity="0.7"/>
+            <circle cx="320" cy="120" r="20" fill="#1B4D52" opacity="0.85"/>
+
+            <text x="80" y="125" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="14" font-weight="600">Na</text>
+            <text x="170" y="125" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="14" font-weight="600">Mg</text>
+            <text x="250" y="125" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="14" font-weight="600">Al</text>
+            <text x="320" y="125" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="14" font-weight="600">Si</text>
+
+            <line x1="40" y1="190" x2="360" y2="190" stroke="#0F1B1F" stroke-width="1.5" marker-end="url(#arr2)"/>
+            <text x="200" y="215" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="10" letter-spacing="2">ACROSS PERIOD → SIZE DECREASES</text>
+
+            <circle cx="450" cy="80" r="18" fill="#C4502E" opacity="0.7"/>
+            <circle cx="450" cy="130" r="28" fill="#C4502E" opacity="0.7"/>
+            <circle cx="450" cy="190" r="38" fill="#C4502E" opacity="0.7"/>
+
+            <text x="450" y="85" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="12" font-weight="600">Li</text>
+            <text x="450" y="135" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="13" font-weight="600">Na</text>
+            <text x="450" y="195" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="14" font-weight="600">K</text>
+
+            <line x1="510" y1="60" x2="510" y2="220" stroke="#0F1B1F" stroke-width="1.5" marker-end="url(#arr2)"/>
+            <text x="555" y="145" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="10" letter-spacing="2" transform="rotate(90 555 145)">DOWN GROUP → SIZE INCREASES</text>
+          </svg>
+          <div class="diagram-caption">Atomic size decreases across a period and increases down a group</div>
+        </div>
+      </div>
+
+      <!-- EVENT 05: Across a Period -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">05</span>
+          <span class="event-name">Across a Period</span>
+        </div>
+        <h2 class="event-heading">Atomic radius decreases across a period</h2>
+        <div class="event-body">
+          <p>
+            Across a period (from left to right), the atomic radius generally <strong>decreases</strong>.
+            The PSPM-style explanation uses this exact reasoning chain — learn it word for word:
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · Across a Period</div>
+          <h4>Why Al is smaller than Na</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              As proton number increases, but the number of inner electrons remains the same.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <strong>Effective nuclear charge increases.</strong>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Positive charge felt by valence electron toward nucleus is stronger.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Attraction of nucleus toward valence electron is stronger.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Valence electrons move closer to the nucleus.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              <strong>Atomic radius smaller.</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">Mnemonic from your notes — PIECES</div>
+          <p>
+            <strong>P</strong>roton number increases · <strong>I</strong>nner electrons remain the same ·
+            <strong>E</strong>ffective nuclear charge stronger · <strong>A</strong>ttracts valence electrons more strongly ·
+            <strong>E</strong>lectrons move closer to the nucleus · <strong>S</strong>hrink — smaller atomic radius.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 06: Down a Group -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">06</span>
+          <span class="event-name">Down a Group</span>
+        </div>
+        <h2 class="event-heading">Atomic radius increases down a group</h2>
+        <div class="event-body">
+          <p>
+            Going down a group, the atomic radius generally <strong>increases</strong>. This time the
+            dominant factor is <strong>shielding effect</strong>, not effective nuclear charge:
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · Down a Group</div>
+          <h4>Why K is bigger than Li</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              Principal quantum number, n, increases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              Number of inner electrons increases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Inner electrons shield valence electrons strongly.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <strong>Shielding effect increases.</strong>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Attraction of nucleus toward valence electron is weaker.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              Valence electrons move apart from the nucleus.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">07</div>
+            <div class="step-content">
+              <strong>Atomic radius bigger.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 07: Transition Metals -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">07</span>
+          <span class="event-name">Transition Metals</span>
+        </div>
+        <h2 class="event-heading">The first row of transition elements — less uniform</h2>
+        <div class="event-body">
+          <p>
+            Across the first row of transition elements (Sc to Zn in Period 4), the trend is
+            <strong>less uniform</strong>. It splits into three regions:
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">Sc to Cr — atomic radius decreases</div>
+          <p>
+            Proton number increases, resulting in an increase in nuclear charge. Attraction of nucleus
+            toward electrons getting stronger. Electrons are pulled closer to the nucleus, making the
+            radius getting smaller from Sc to Cr.
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">Mn to Ni — approximately constant</div>
+          <p>
+            Electrons are filled to the inner shell (3d) but the number of electrons in the 4s orbital
+            remains the same. The increased nuclear charge is partly cancelled by the increased
+            screening effect of electrons in the 3d-orbitals of the penultimate shell. This makes
+            the radius not change much among Mn, Fe, Co, and Ni.
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">Cu and Zn — atomic radius increases</div>
+          <p>
+            All 5 orbitals in 3d are full with 10 electrons. Electron-electron repulsion in the
+            fully-filled 3d orbital increases. The repulsive forces from the paired electrons in 3d
+            orbitals become dominant compared with nuclear charge. Electrons in 4s orbital push apart
+            from electrons in 3d orbital, causing expansion of the electron cloud between 4s and 3d
+            orbital. This results in the atomic size at Cu and Zn increasing.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 08: Practice 1 -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">08</span>
+          <span class="event-name">Your Turn — Atomic Radii</span>
+        </div>
+        <h2 class="event-heading">Practice: explain a trend</h2>
+
+        <div class="quiz" data-quiz-id="u2-practice-1">
+          <div class="quiz-label">Question 1 of 4</div>
+          <div class="quiz-question">Which factor is the main reason why atomic radius <em>decreases</em> across Period 3 from Na to Cl?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Shielding effect explains why size INCREASES down a group, not why it decreases across a period. Across a period, the number of inner electrons stays the same — so shielding doesn&apos;t change significantly.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Shielding effect increases</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Across a period, proton number increases but the number of inner electrons remains the same. Effective nuclear charge increases. The attraction of nucleus toward valence electrons is stronger, so they move closer to the nucleus — atomic radius decreases.')">
+              <span class="quiz-option-letter">B</span>
+              <span>Effective nuclear charge increases</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Principal quantum number does NOT change across a period — all Period 3 elements have valence electrons in n = 3. This factor explains the down-a-group trend, not across-period.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Principal quantum number increases</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Electron-electron repulsion is the explanation for the Cu and Zn anomaly in transition metals — not a general trend across a period.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Electron-electron repulsion increases</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 09: Atom vs Ion -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">09</span>
+          <span class="event-name">Atom vs Ion</span>
+        </div>
+        <h2 class="event-heading">What happens to size when an atom becomes an ion?</h2>
+        <div class="event-body">
+          <p>
+            When an atom becomes an ion, its size changes — and the direction depends on whether
+            it forms a cation or an anion. Two reasoning chains, each one a PSPM standard:
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · Atom → Cation</div>
+          <h4>Why a cation is smaller than its neutral atom</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              Cation is formed when its atom donates/removes outermost electron(s) to achieve a stable electronic configuration.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              Number of electrons in the cation is <strong>lesser</strong> compared to its neutral atom.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Electron-electron repulsion / mutual repulsion of electrons in the cation is <strong>weaker</strong>.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Attraction between nucleus toward valence electrons in the cation is <strong>stronger</strong> than its atom.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Valence electrons in the cation move closer to the nucleus.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              Therefore, the size of the cation is <strong>smaller</strong> than its neutral atom.
+            </div>
+          </div>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · Atom → Anion</div>
+          <h4>Why an anion is bigger than its neutral atom</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              Anion is formed when its atom accepts/gains electron(s) to achieve a stable electronic configuration.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              Number of electrons in the anion is <strong>more</strong> compared to its neutral atom.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Electron-electron repulsion / mutual repulsion of electrons in the anion is <strong>stronger</strong>.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Attraction between nucleus toward valence electrons in the anion is <strong>weaker</strong> than its atom.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Valence electrons in the anion move apart from the nucleus.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              Therefore, the size of the anion is <strong>bigger</strong> than its neutral atom.
+            </div>
+          </div>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">PSPM Tip</div>
+          <p>
+            The key phrase in both chains is <strong>"electron-electron repulsion"</strong> (or "mutual repulsion of electrons").
+            This is the distinguishing factor when comparing an atom to its own ion — the proton number doesn't change,
+            so effective nuclear charge stays the same. What changes is the number of electrons, and therefore the repulsion between them.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 10: Practice 2 -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">10</span>
+          <span class="event-name">Your Turn — Atom vs Ion</span>
+        </div>
+        <h2 class="event-heading">Practice: comparing atom and ion</h2>
+
+        <div class="quiz" data-quiz-id="u2-practice-2">
+          <div class="quiz-label">Question 2 of 4</div>
+          <div class="quiz-question">Why is the radius of O²⁻ bigger than the radius of neutral O atom?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Effective nuclear charge depends on protons and inner electrons. Going from O to O²⁻, the proton number does NOT change — only the number of electrons changes. So effective nuclear charge is not the right explanation.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Effective nuclear charge of O²⁻ is weaker than O</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. O²⁻ has more electrons than O. Electron-electron repulsion in O²⁻ is stronger. Attraction between nucleus toward valence electrons in O²⁻ is weaker than O. Valence electrons move apart from the nucleus. Therefore, size of O²⁻ is bigger than O.')">
+              <span class="quiz-option-letter">B</span>
+              <span>Electron-electron repulsion in O²⁻ is stronger, so valence electrons move apart from the nucleus</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'O²⁻ and O both have the same principal quantum number (n=2 for valence electrons). Adding electrons does not change which shell they go into here — they fill the existing 2p subshell.')">
+              <span class="quiz-option-letter">C</span>
+              <span>O²⁻ has a higher principal quantum number than O</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Shielding effect explains down-the-group trends. Both O and O²⁻ have the same number of inner electrons (1s² = 2 inner electrons), so shielding is identical.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Shielding effect in O²⁻ is greater than in O</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 11: Isoelectronic -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">11</span>
+          <span class="event-name">Isoelectronic Species</span>
+        </div>
+        <h2 class="event-heading">What does "isoelectronic" mean?</h2>
+
+        <div class="callout">
+          <div class="callout-label">Definition</div>
+          <p>
+            Atoms or ions are called <strong>isoelectronic</strong> when they have the
+            <strong>same number of electrons</strong> and the <strong>same electronic configuration</strong>.
+          </p>
+        </div>
+
+        <div class="event-body">
+          <p>
+            For example, the species N³⁻, O²⁻, F⁻, Ne, Na⁺, Mg²⁺, and Al³⁺ are all isoelectronic.
+            Each has 10 electrons in the configuration 1s² 2s² 2p⁶ — the same as a neon atom.
+          </p>
+          <p>
+            Among isoelectronic species, the size depends entirely on the <strong>proton number</strong>.
+            The species with the <strong>most positive charge</strong> is the smallest. The species with
+            the <strong>most negative charge</strong> is the largest.
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · Isoelectronic Radii</div>
+          <h4>Why N³⁻ is bigger than Al³⁺</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              All the ions have the same total of 10 electrons. Electronic configuration: 1s² 2s² 2p⁶.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              Decreasing proton number from Al³⁺ to N³⁻, but the number of inner electrons remains the same.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Effective nuclear charge also decreases significantly.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              The attraction of the nucleus towards the valence electrons getting weaker.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Valence electrons pulled apart from the nucleus.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              Ionic size getting bigger from Al³⁺ to N³⁻.
+            </div>
+          </div>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">Key insight</div>
+          <p>
+            For <strong>isoelectronic species</strong>, the reasoning uses <strong>effective nuclear charge</strong> —
+            because all the species share the same number of electrons and the same configuration, the
+            <em>only</em> thing varying is the proton number. This is different from the atom-vs-ion case,
+            where electron-electron repulsion is the key.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 12: Practice 3 -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">12</span>
+          <span class="event-name">Your Turn — Isoelectronic</span>
+        </div>
+        <h2 class="event-heading">Practice: identifying isoelectronic species</h2>
+
+        <div class="quiz" data-quiz-id="u2-practice-3">
+          <div class="quiz-label">Question 3 of 4</div>
+          <div class="quiz-question">Arrange the following species in order of <strong>increasing</strong> ionic radius: Mg²⁺, F⁻, Na⁺, O²⁻.</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'You have it the wrong way around. All four species have 10 electrons (isoelectronic). The most positive charge → smallest size; the most negative charge → biggest size.')">
+              <span class="quiz-option-letter">A</span>
+              <span>O²⁻ &lt; F⁻ &lt; Na⁺ &lt; Mg²⁺</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. All four are isoelectronic (10 electrons, 1s² 2s² 2p⁶). As proton number decreases from Mg (12) → Na (11) → F (9) → O (8), effective nuclear charge decreases, attraction toward valence electrons gets weaker, and ionic size gets bigger. So Mg²⁺ < Na⁺ < F⁻ < O²⁻.')">
+              <span class="quiz-option-letter">B</span>
+              <span>Mg²⁺ &lt; Na⁺ &lt; F⁻ &lt; O²⁻</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'These are NOT in size order — you mixed cations and anions arbitrarily. Among isoelectronic species, the order depends only on proton number.')">
+              <span class="quiz-option-letter">C</span>
+              <span>F⁻ &lt; Mg²⁺ &lt; O²⁻ &lt; Na⁺</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Check the proton numbers: Mg = 12, Na = 11, F = 9, O = 8. Smaller proton number → weaker effective nuclear charge → bigger ion. Na⁺ has 11 protons, not the most.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Na⁺ &lt; Mg²⁺ &lt; O²⁻ &lt; F⁻</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 13: Ionic Radii Across Period 2 -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">13</span>
+          <span class="event-name">Ionic Radii Across Period 2</span>
+        </div>
+        <h2 class="event-heading">Ionic radii across Period 2 — the drastic jump</h2>
+        <div class="event-body">
+          <p>
+            When you look at the ionic radii across Period 2, the trend isn't smooth — it has a
+            <strong>drastic/sudden increase</strong> in the middle, where the elements switch from
+            forming cations to forming anions.
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">From Li⁺ to C⁴⁺ — ionic radius decreases</div>
+          <p>
+            Li⁺, Be²⁺, B³⁺, C⁴⁺ are isoelectronic species (1s²) which have similar electronic configuration.
+            From Li⁺ to C⁴⁺, the number of protons increases but the number of inner electrons remains the same.
+            Thus, effective nuclear charge increases. Attraction of nucleus toward valence electrons getting stronger.
+            Valence electrons move closer to the nucleus. Ionic size decreases.
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">From C⁴⁺ to N³⁻ — a drastic increase</div>
+          <p>
+            There is a drastic/sudden increase in ionic radius from C⁴⁺ to N³⁻. N³⁻ ion has a
+            higher principal quantum number / extra shell for valence electrons (n=2) compared to
+            C⁴⁺ (n=1). N³⁻ ion has more inner electrons. Hence, the shielding effect in N³⁻ ion is
+            greater than in C⁴⁺ ion. Thus, attraction of nucleus toward valence electron in N³⁻ ion
+            is weaker than in C⁴⁺ ion. Valence electrons move apart from the nucleus in N³⁻.
+            Ionic size N³⁻ is bigger than C⁴⁺.
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">From N³⁻ to F⁻ — ionic radius decreases again</div>
+          <p>
+            N³⁻, O²⁻, F⁻ are isoelectronic species (1s² 2s² 2p⁶) which have similar electronic configuration.
+            From N³⁻ to F⁻, the number of protons increases but the number of inner electrons remains the same.
+            Thus, effective nuclear charge increases. Attraction of nucleus toward valence electrons getting stronger.
+            Valence electrons move closer to the nucleus. Ionic size decreases.
+          </p>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">The pattern across Period 2 ions</div>
+          <p>
+            <strong>Li⁺ &gt; Be²⁺ &gt; B³⁺ &gt; C⁴⁺</strong> (cations: isoelectronic, decreasing size)<br>
+            <strong>then drastic jump up</strong><br>
+            <strong>N³⁻ &gt; O²⁻ &gt; F⁻</strong> (anions: isoelectronic, decreasing size)
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 14: Practice 4 -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">14</span>
+          <span class="event-name">Your Turn — Period 3 Ions</span>
+        </div>
+        <h2 class="event-heading">Now analyse Period 3 ions yourself</h2>
+        <div class="event-body">
+          <p>
+            Apply the same logic to Period 3. The ions of Period 3 are:
+            Na⁺, Mg²⁺, Al³⁺, Si⁴⁺, P³⁻, S²⁻, Cl⁻.
+          </p>
+        </div>
+
+        <div class="quiz" data-quiz-id="u2-practice-4">
+          <div class="quiz-label">Question 4 of 4</div>
+          <div class="quiz-question">Across Period 3 ions, which pair shows the <strong>drastic/sudden increase</strong> in ionic radius?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Na⁺ and Mg²⁺ are both isoelectronic cations (10 electrons). They show a gradual decrease in size, not a drastic increase.')">
+              <span class="quiz-option-letter">A</span>
+              <span>From Na⁺ to Mg²⁺</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Mg²⁺ and Al³⁺ are both isoelectronic cations (10 electrons, [Ne] configuration). They show a gradual decrease in size from Mg²⁺ to Al³⁺.')">
+              <span class="quiz-option-letter">B</span>
+              <span>From Mg²⁺ to Al³⁺</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Si⁴⁺ has 10 electrons (1s² 2s² 2p⁶, n=2 for valence). P³⁻ has 18 electrons (1s² 2s² 2p⁶ 3s² 3p⁶, n=3 for valence). The jump from n=2 to n=3 plus more inner electrons (more shielding) causes a drastic/sudden increase in ionic radius.')">
+              <span class="quiz-option-letter">C</span>
+              <span>From Si⁴⁺ to P³⁻</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'S²⁻ and Cl⁻ are both isoelectronic anions (18 electrons). They show a gradual decrease in size from S²⁻ to Cl⁻ — no drastic jump.')">
+              <span class="quiz-option-letter">D</span>
+              <span>From S²⁻ to Cl⁻</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 15: Summary -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">15</span>
+          <span class="event-name">Summary</span>
+        </div>
+        <h2 class="event-heading">What you should walk away with</h2>
+        <div class="event-body">
+          <p>
+            You now have <strong>four PSPM-standard reasoning chains</strong> for size trends.
+            Match the chain to the question type:
+          </p>
+          <ul class="takeaways">
+            <li><span class="key">ACROSS</span><span>Effective nuclear charge increases → smaller atomic radius</span></li>
+            <li><span class="key">DOWN</span><span>Shielding effect increases → bigger atomic radius</span></li>
+            <li><span class="key">ATOM↔ION</span><span>Electron-electron repulsion change → cation smaller, anion bigger</span></li>
+            <li><span class="key">ISO-E</span><span>Same electrons; proton number rules → more +charge = smaller</span></li>
+          </ul>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">How this shows up in PSPM</div>
+          <p>
+            Q1(b) and Q2 in every CA set test these reasoning chains. You'll be asked to <strong>compare</strong>
+            atomic radii of named elements, or to <strong>explain</strong> the size difference between an atom
+            and its ion using the keyword sequence from your notes. The grader looks for specific keywords:
+            "effective nuclear charge", "shielding effect", "electron-electron repulsion",
+            "attraction of nucleus toward valence electron", "valence electrons move closer to / apart from the nucleus".
+            Use the language from your notes — every term is a mark.
+          </p>
+        </div>
+      </div>
+
     </div>
-  `;
 
-  const sidebarEl = document.getElementById('sidebar');
-  if (sidebarEl) {
-    sidebarEl.innerHTML = sidebarHtml;
-  }
-}
+    <div class="unit-nav-footer">
+      <a class="btn btn-secondary" href="unit-1.html">← Back to Unit 1</a>
+      <a class="btn btn-primary" href="unit-3.html">Continue to Unit 3 →</a>
+    </div>
+
+  </main>
+</div>
+
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/sidebar.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderSidebar('unit-2');
+  });
+</script>
+
+</body>
+</html>
