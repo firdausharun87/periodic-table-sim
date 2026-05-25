@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 3: Energy to Break Free | Periodic Table SIM</title>
+<title>Unit 3: Energy to Break Free — Ionisation Energy | Periodic Table SIM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 
   <aside class="sidebar" id="sidebar"></aside>
 
-  <main class="main">
+  <main class="main" data-unit-quizzes="u3-prereq-1,u3-practice-1,u3-practice-2,u3-practice-3,u3-practice-4">
 
     <div class="unit-header">
       <div class="breadcrumb">
@@ -26,16 +26,818 @@
       <div class="unit-header-grid">
         <div>
           <h1 class="unit-title">Energy to <em>Break Free</em></h1>
-          <p class="unit-deck">Ionisation energy — coming soon in v0.2.</p>
+          <p class="unit-deck">
+            How tightly atoms hold onto their electrons — and how reading successive
+            ionisation energies lets you deduce an atom's group from numbers alone.
+          </p>
+        </div>
+        <div class="progress-card">
+          <div class="progress-label">Your Progress</div>
+          <div class="progress-text" id="unit-progress-text">0 of 5 checkpoints complete</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="unit-progress-fill" style="width: 0%"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="unit-content">
-      <div class="callout">
-        <div class="callout-label">In Development</div>
-        <p>This unit is part of the planned build but not yet authored. The MVP focuses on validating the SIM structure with Unit 1 first.</p>
+
+      <!-- EVENT 01: Learning Outcomes -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">01</span>
+          <span class="event-name">Learning Outcomes</span>
+        </div>
+        <h2 class="event-heading">What you'll be able to do</h2>
+        <div class="callout lo">
+          <div class="callout-label">By the end of this unit</div>
+          <ul class="lo-list">
+            <li>Define the <strong>first and second ionisation energies</strong>.</li>
+            <li>Analyse the variations in the first ionisation energy <strong>across a period</strong> and <strong>down a group</strong>.</li>
+            <li>Explain the <strong>increase in the successive ionisation energies</strong> of an element.</li>
+            <li>Deduce the electronic configuration of an element and its position in the periodic table based on <strong>successive ionisation energy data</strong>.</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- EVENT 02: Before You Begin -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">02</span>
+          <span class="event-name">Before You Begin</span>
+        </div>
+        <h2 class="event-heading">A quick check on prior knowledge</h2>
+        <div class="event-body">
+          <p>
+            This unit builds on the three factors you learned in Unit 2 — <strong>nuclear charge</strong>,
+            <strong>effective nuclear charge</strong>, and <strong>shielding effect</strong>. You'll also need
+            to remember that <strong>fully filled</strong> and <strong>half filled</strong> orbital configurations
+            are more stable than partially filled ones (from Topic 2).
+          </p>
+          <p>
+            One new idea: ionisation energy is measured for an atom in the <strong>gaseous state</strong>.
+            We always write <code>X(g)</code> in our equations to show the atom is gaseous.
+          </p>
+        </div>
+
+        <div class="quiz" data-quiz-id="u3-prereq-1">
+          <div class="quiz-label">Quick check</div>
+          <div class="quiz-question">Which electron configuration is the <strong>most stable</strong>?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'A partially filled subshell is the least stable of the four options. The 2p² configuration has only 2 of 6 possible 2p electrons — not fully filled, not half filled.')">
+              <span class="quiz-option-letter">A</span>
+              <span>2p² (partially filled p subshell)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'A half filled 2p³ is more stable than a partially filled 2p², but a fully filled subshell is even more stable.')">
+              <span class="quiz-option-letter">B</span>
+              <span>2p³ (half filled p subshell)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Fully filled subshells (like 2p⁶) are the most stable configuration. Half filled subshells (2p³) are also stable but less so. Partially filled subshells (2p², 2p⁴) are least stable. This stability ranking explains the IE anomalies.')">
+              <span class="quiz-option-letter">C</span>
+              <span>2p⁶ (fully filled p subshell)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'A partially filled subshell like 2p⁴ is less stable than both half filled (2p³) and fully filled (2p⁶) subshells.')">
+              <span class="quiz-option-letter">D</span>
+              <span>2p⁴ (partially filled p subshell)</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 03: First Ionisation Energy -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">03</span>
+          <span class="event-name">First Ionisation Energy</span>
+        </div>
+        <h2 class="event-heading">Defining IE₁</h2>
+
+        <div class="callout lo">
+          <div class="callout-label">Definition · First Ionisation Energy (IE₁)</div>
+          <p>
+            The <strong>minimum energy required to remove 1 mol of electrons from 1 mol of
+            gaseous atoms to form 1 mol of gaseous ions</strong>.
+          </p>
+        </div>
+
+        <div class="event-body">
+          <p>The general equation:</p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="300" y="60" text-anchor="middle" fill="#0F1B1F" font-family="Fraunces" font-size="22" font-weight="500">X(g) → X⁺(g) + e⁻</text>
+            <text x="300" y="95" text-anchor="middle" fill="#C4502E" font-family="JetBrains Mono" font-size="12" letter-spacing="1">ΔE = IE₁  (always positive, &gt; 0)</text>
+            <text x="300" y="120" text-anchor="middle" fill="#2A3A40" font-family="Inter Tight" font-size="13" font-style="italic">Units: J/mol or kJ/mol</text>
+          </svg>
+          <div class="diagram-caption">General equation for first ionisation energy</div>
+        </div>
+
+        <div class="event-body">
+          <p>
+            For example, removing the first electron from a gaseous sodium atom requires +496 kJ/mol:
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">Example · First IE of Na</div>
+          <h4>Na(g) → Na⁺(g) + e⁻</h4>
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              IE₁ = +496 kJ/mol<br>
+              This removes the <strong>first electron from the outermost shell</strong> — in Na, that's the lone 3s¹ electron.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 04: Second Ionisation Energy -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">04</span>
+          <span class="event-name">Second Ionisation Energy</span>
+        </div>
+        <h2 class="event-heading">Defining IE₂ — and why it's always higher</h2>
+
+        <div class="callout lo">
+          <div class="callout-label">Definition · Second Ionisation Energy (IE₂)</div>
+          <p>
+            The energy required to remove 1 mol of electrons from 1 mol of
+            <strong>unipositive (+1) gaseous ions</strong>.
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="300" y="60" text-anchor="middle" fill="#0F1B1F" font-family="Fraunces" font-size="22" font-weight="500">X⁺(g) → X²⁺(g) + e⁻</text>
+            <text x="300" y="95" text-anchor="middle" fill="#C4502E" font-family="JetBrains Mono" font-size="12" letter-spacing="1">ΔE = IE₂  (always &gt; IE₁)</text>
+            <text x="300" y="120" text-anchor="middle" fill="#2A3A40" font-family="Inter Tight" font-size="13" font-style="italic">Removing the second electron</text>
+          </svg>
+          <div class="diagram-caption">General equation for second ionisation energy</div>
+        </div>
+
+        <div class="event-body">
+          <p>
+            For sodium: Na⁺(g) → Na²⁺(g) + e⁻ requires +4562 kJ/mol — nearly 10 times more than IE₁.
+            Why such a huge jump? You're now removing an electron from the inner shell (the 2p⁶ shell),
+            which is much closer to the nucleus and much harder to remove.
+          </p>
+          <p>
+            <strong>The number of IEs depends on the number of electrons in the atom.</strong> Sodium
+            has 11 electrons, so it has a maximum of 11 successive ionisation energies — IE₁ through IE₁₁.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 05: Factors Affecting IE -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">05</span>
+          <span class="event-name">Factors Affecting IE</span>
+        </div>
+        <h2 class="event-heading">Five factors that increase ionisation energy</h2>
+        <div class="event-body">
+          <p>
+            Ionisation energy <strong>increases</strong> when any of these five conditions are met:
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Five factor boxes in a vertical stack -->
+            <g>
+              <rect x="40" y="20" width="620" height="44" fill="#1B4D52" opacity="0.9" rx="2"/>
+              <text x="60" y="48" fill="#F5F1E8" font-family="Fraunces" font-size="15" font-weight="600">1.</text>
+              <text x="90" y="48" fill="#F5F1E8" font-family="Inter Tight" font-size="14">Size of atom smaller</text>
+              <text x="640" y="48" text-anchor="end" fill="#E89B7A" font-family="JetBrains Mono" font-size="11" letter-spacing="1">↑ IE</text>
+            </g>
+            <g>
+              <rect x="40" y="74" width="620" height="44" fill="#C4502E" opacity="0.9" rx="2"/>
+              <text x="60" y="102" fill="#F5F1E8" font-family="Fraunces" font-size="15" font-weight="600">2.</text>
+              <text x="90" y="102" fill="#F5F1E8" font-family="Inter Tight" font-size="14">Shielding / screening effect weaker</text>
+              <text x="640" y="102" text-anchor="end" fill="#F5F1E8" font-family="JetBrains Mono" font-size="11" letter-spacing="1">↑ IE</text>
+            </g>
+            <g>
+              <rect x="40" y="128" width="620" height="44" fill="#B8862F" opacity="0.9" rx="2"/>
+              <text x="60" y="156" fill="#F5F1E8" font-family="Fraunces" font-size="15" font-weight="600">3.</text>
+              <text x="90" y="156" fill="#F5F1E8" font-family="Inter Tight" font-size="14">Nuclear charge higher</text>
+              <text x="640" y="156" text-anchor="end" fill="#F5F1E8" font-family="JetBrains Mono" font-size="11" letter-spacing="1">↑ IE</text>
+            </g>
+            <g>
+              <rect x="40" y="182" width="620" height="44" fill="#2A7A82" opacity="0.9" rx="2"/>
+              <text x="60" y="210" fill="#F5F1E8" font-family="Fraunces" font-size="15" font-weight="600">4.</text>
+              <text x="90" y="210" fill="#F5F1E8" font-family="Inter Tight" font-size="14">Effective nuclear charge stronger</text>
+              <text x="640" y="210" text-anchor="end" fill="#F5F1E8" font-family="JetBrains Mono" font-size="11" letter-spacing="1">↑ IE</text>
+            </g>
+            <g>
+              <rect x="40" y="236" width="620" height="44" fill="#0E2F33" opacity="0.95" rx="2"/>
+              <text x="60" y="264" fill="#F5F1E8" font-family="Fraunces" font-size="15" font-weight="600">5.</text>
+              <text x="90" y="264" fill="#F5F1E8" font-family="Inter Tight" font-size="14">High stability of electronic configuration (e.g. fully filled orbital)</text>
+              <text x="640" y="264" text-anchor="end" fill="#E89B7A" font-family="JetBrains Mono" font-size="11" letter-spacing="1">↑ IE</text>
+            </g>
+            <text x="350" y="305" text-anchor="middle" fill="#2A3A40" font-family="Fraunces" font-style="italic" font-size="13">All five raise IE. Most periodic trends can be explained by combinations of these.</text>
+          </svg>
+          <div class="diagram-caption">The five factors that increase ionisation energy</div>
+        </div>
+      </div>
+
+      <!-- EVENT 06: IE Across a Period -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">06</span>
+          <span class="event-name">IE Across a Period</span>
+        </div>
+        <h2 class="event-heading">First IE increases across a period</h2>
+        <div class="event-body">
+          <p>
+            Across a period, the first ionisation energy generally <strong>increases</strong>.
+            The PSPM-style explanation uses this exact reasoning chain:
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · IE Across a Period</div>
+          <h4>Why IE increases from Na to Ar</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              Atomic size smaller due to proton number increases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              Number of inner electrons remains the same.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <strong>Effective nuclear charge increases.</strong>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Attraction of nucleus toward valence electron stronger.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              More energy needed to remove outer electrons.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              <strong>Ionisation energy increases across a period.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 07: The Anomalies -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">07</span>
+          <span class="event-name">The Anomalies</span>
+        </div>
+        <h2 class="event-heading">The two anomalies across Period 3</h2>
+        <div class="event-body">
+          <p>
+            The general trend is "IE increases across the period" — but there are two famous
+            exceptions where IE actually <em>drops</em> instead of rising. Both happen because of
+            the stability rule from Topic 2: <strong>fully filled and half filled are more stable
+            than partially filled</strong>.
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">Anomaly 1 · Between Mg (Group 2) and Al (Group 13)</div>
+          <p>
+            Mg has a <strong>fully filled 3s² orbital</strong> (configuration: 1s² 2s² 2p⁶ 3s²).
+            Al has a <strong>partially filled 3p¹ orbital</strong> (configuration: 1s² 2s² 2p⁶ 3s² 3p¹).
+            More energy is needed (IE higher) to remove the 1st electron from Mg because the fully filled
+            3s orbital is more stable than the partially filled 3p orbital in Al. Moreover, the 1st
+            electron in the 3p orbital of Al is higher in energy, hence less stable and is easier to
+            be removed, so its IE is lower.
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">Anomaly 2 · Between P (Group 15) and S (Group 16)</div>
+          <p>
+            In P, Group 15 (3s² 3p³), all 3 electrons in the 3p orbital are single in the same spin —
+            <strong>more stable (half filled 3p orbitals)</strong>. In S, Group 16 (3s² 3p⁴), the 3p
+            orbital is <strong>partially filled — less stable</strong>. Removing the outer electron
+            from a partially filled orbital is much easier than from a half filled orbital. Less energy
+            is needed to remove the 1st outer electron in sulphur. Therefore, the 1st IE in P is higher than S.
+          </p>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">Memorise this</div>
+          <p>
+            The same two anomalies happen in Period 2 (between Be–B and N–O) — the reasoning is identical.
+            Anytime you see Group 2/13 or Group 15/16 in a question, expect to invoke the stability rule.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 08: Practice 1 - Anomaly -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">08</span>
+          <span class="event-name">Your Turn — Anomalies</span>
+        </div>
+        <h2 class="event-heading">Practice: spotting the anomaly</h2>
+
+        <div class="quiz" data-quiz-id="u3-practice-1">
+          <div class="quiz-label">Question 1 of 4</div>
+          <div class="quiz-question">Why is the first ionisation energy of phosphorus <em>higher</em> than that of sulphur, even though sulphur has more protons?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Both P and S are in Period 3, so they have the same number of inner electrons (10). The effective nuclear charge actually increases from P to S — so this would predict S having higher IE, which is the wrong direction.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Effective nuclear charge of P is stronger than S</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. P has 3s² 3p³ — a half filled 3p orbital, which is more stable. S has 3s² 3p⁴ — partially filled 3p, which is less stable. Less energy is needed to remove the 1st outer electron in S because half filled configuration is more stable than partially filled. Therefore IE of P is higher than S.')">
+              <span class="quiz-option-letter">B</span>
+              <span>P has a half filled 3p orbital (more stable); S has a partially filled 3p orbital (less stable)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'P and S have very similar atomic sizes — this isn&apos;t the main factor. The key factor is the stability difference between half filled and partially filled 3p orbitals.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Atomic size of P is much smaller than S</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Shielding effect explains down-the-group trends. Both P and S are in Period 3 with the same inner electrons — shielding is essentially identical.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Shielding effect in P is weaker than S</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 09: IE Down a Group -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">09</span>
+          <span class="event-name">IE Down a Group</span>
+        </div>
+        <h2 class="event-heading">First IE decreases down a group</h2>
+        <div class="event-body">
+          <p>
+            Going down a group, the first ionisation energy generally <strong>decreases</strong>.
+            The dominant factor is <strong>shielding effect</strong>, not effective nuclear charge:
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · IE Down a Group</div>
+          <h4>Why IE decreases from Li to Cs</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              Atomic size bigger due to increases in principal quantum number, n.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              Number of inner electrons increases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <strong>Shielding effect stronger.</strong>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Attraction of nucleus toward valence electron weaker.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Less energy needed to remove outer electrons.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              <strong>Ionisation energy decreases down the group.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 10: Practice 2 - Trend -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">10</span>
+          <span class="event-name">Your Turn — IE Trends</span>
+        </div>
+        <h2 class="event-heading">Practice: matching configuration to IE</h2>
+
+        <div class="quiz" data-quiz-id="u3-practice-2">
+          <div class="quiz-label">Question 2 of 4</div>
+          <div class="quiz-question">Two atoms have these configurations: <strong>Atom 1</strong> = 1s² 2s² 2p⁶ (IE₁ = 2080 kJ/mol) and <strong>Atom 2</strong> = 1s² 2s² 2p⁶ 3s¹ (IE₁ = 496 kJ/mol). Why is Atom 1's IE so much higher?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Atom 1 actually has fewer electrons than Atom 2, so this is the wrong direction. Electron count isn&apos;t the main factor here — the stability of the configuration is.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Atom 1 has more electrons, so more energy is needed to remove one</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Atom 1 (Ne) has a noble gas configuration — fully filled 2p orbital, very stable. Extremely difficult (high energy) to remove an outer electron from a fully filled orbital. Atom 2 (Na) has a single 3s¹ electron located in a higher energy level, further from the nucleus, feeling less attraction — making it easier to remove. Thus, Atom 1 has higher IE.')">
+              <span class="quiz-option-letter">B</span>
+              <span>Atom 1 has a noble gas configuration (fully filled), making it extremely difficult to remove an outer electron</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Shielding alone doesn&apos;t explain such a dramatic difference (2080 vs 496 kJ/mol). The dominant factor is the stability of Atom 1&apos;s noble gas configuration.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Atom 1 has weaker shielding effect than Atom 2</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Atom 2 has MORE protons (11) than Atom 1 (10) — so nuclear charge isn&apos;t the answer either. The key is the noble gas stability of Atom 1.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Atom 1 has a higher nuclear charge than Atom 2</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 11: Successive IE Introduction -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">11</span>
+          <span class="event-name">Successive IE</span>
+        </div>
+        <h2 class="event-heading">Successive ionisation energies — and why they always increase</h2>
+        <div class="event-body">
+          <p>
+            For any atom, the successive ionisation energies always increase in this order:
+          </p>
+          <p style="text-align:center;font-family:var(--mono);font-size:16px;color:var(--ink);padding:16px 0">
+            IE₁ &lt; IE₂ &lt; IE₃ &lt; IE₄ &lt; IE₅ &lt; IE₆ ...
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">Why IE always increases</div>
+          <h4>The general reasoning</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              When an outer electron is removed from a neutral atom, the number of electrons decreases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              The repulsion among the remaining electrons decreases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Attraction of valence electrons toward the nucleus getting stronger.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              More energy is required to remove another electron from the positively charged ion.
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">But the increase isn't smooth</div>
+          <p>
+            Energy required to remove each electron from the valence shell keeps increasing.
+            <strong>However, this increase is not smooth.</strong> There is a sudden/drastic increase
+            of IE when there is a change of shell — when electrons are removed from a shell that gets
+            closer to the nucleus.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 12: Reading the Graph -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">12</span>
+          <span class="event-name">Reading Successive IE</span>
+        </div>
+        <h2 class="event-heading">The "drastic jump" reveals the group</h2>
+        <div class="event-body">
+          <p>
+            Look at the successive IEs of silicon (Z = 14, configuration 1s² 2s² 2p⁶ 3s² 3p²):
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background grid -->
+            <defs>
+              <pattern id="ie-grid" width="50" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 50 0 L 0 0 0 40" fill="none" stroke="#C9C0AB" stroke-width="0.5" opacity="0.3"/>
+              </pattern>
+            </defs>
+            <rect x="60" y="30" width="600" height="280" fill="url(#ie-grid)"/>
+
+            <!-- Y axis -->
+            <line x1="60" y1="30" x2="60" y2="310" stroke="#0F1B1F" stroke-width="1.5"/>
+            <text x="20" y="170" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="11" transform="rotate(-90 20 170)" letter-spacing="2">IE (kJ/mol)</text>
+
+            <!-- X axis -->
+            <line x1="60" y1="310" x2="660" y2="310" stroke="#0F1B1F" stroke-width="1.5"/>
+            <text x="360" y="345" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="11" letter-spacing="2">ELECTRON REMOVED (n-th)</text>
+
+            <!-- Bars: IE1=786, IE2=1580, IE3=3230, IE4=4360, IE5=16100, IE6+...higher -->
+            <!-- Scaled: max ~17000, plot area 280px tall -->
+            <g>
+              <rect x="90" y="297" width="60" height="13" fill="#1B4D52" opacity="0.85"/>
+              <text x="120" y="290" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="9">786</text>
+              <text x="120" y="325" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">IE₁</text>
+            </g>
+            <g>
+              <rect x="170" y="284" width="60" height="26" fill="#1B4D52" opacity="0.85"/>
+              <text x="200" y="277" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="9">1580</text>
+              <text x="200" y="325" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">IE₂</text>
+            </g>
+            <g>
+              <rect x="250" y="257" width="60" height="53" fill="#1B4D52" opacity="0.85"/>
+              <text x="280" y="250" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="9">3230</text>
+              <text x="280" y="325" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">IE₃</text>
+            </g>
+            <g>
+              <rect x="330" y="238" width="60" height="72" fill="#1B4D52" opacity="0.85"/>
+              <text x="360" y="231" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="9">4360</text>
+              <text x="360" y="325" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">IE₄</text>
+            </g>
+            <g>
+              <rect x="410" y="45" width="60" height="265" fill="#C4502E" opacity="0.95"/>
+              <text x="440" y="38" text-anchor="middle" fill="#C4502E" font-family="JetBrains Mono" font-size="10" font-weight="600">16100</text>
+              <text x="440" y="325" text-anchor="middle" fill="#C4502E" font-family="JetBrains Mono" font-size="10" font-weight="600">IE₅</text>
+            </g>
+            <g>
+              <rect x="490" y="20" width="60" height="290" fill="#0E2F33" opacity="0.95"/>
+              <text x="520" y="13" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="9">↑↑</text>
+              <text x="520" y="325" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">IE₆</text>
+            </g>
+
+            <!-- Big arrow showing the jump -->
+            <g>
+              <line x1="395" y1="100" x2="415" y2="100" stroke="#C4502E" stroke-width="2"/>
+              <text x="540" y="105" fill="#C4502E" font-family="Fraunces" font-size="14" font-style="italic" font-weight="600">DRASTIC JUMP</text>
+              <text x="540" y="125" fill="#C4502E" font-family="Inter Tight" font-size="11">5th electron now comes</text>
+              <text x="540" y="140" fill="#C4502E" font-family="Inter Tight" font-size="11">from the inner 2p shell</text>
+            </g>
+          </svg>
+          <div class="diagram-caption">Successive ionisation energies of silicon — note the dramatic jump from IE₄ to IE₅</div>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · Reading the Jump</div>
+          <h4>What the silicon graph tells us</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              Sudden increase in ionisation energy from IE₄ to IE₅.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              The 5th electron is removed from the inner shell which has stable noble gas electron configuration and closer to the nucleus.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Much greater energy needed to remove the 5th electron.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Therefore, <strong>valence electrons = 4</strong>, block <strong>p</strong>, and <strong>Group 14</strong>.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Valence electronic configuration: <code>3s² 3p²</code>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 13: Worked Example - Deducing Group -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">13</span>
+          <span class="event-name">Deducing Group from IE</span>
+        </div>
+        <h2 class="event-heading">Worked example: finding the group</h2>
+
+        <div class="event-body">
+          <p>
+            An element has the following successive ionisation energies (kJ/mol):
+            <strong>1012, 1903, 2910, 4956, 6278, 22230</strong>. Deduce its group number and write
+            its valence electron configuration.
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">Method · Two ways to find the jump</div>
+          <h4>Method 1: Differences between consecutive IEs</h4>
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              IE₂ − IE₁ = 891<br>
+              IE₃ − IE₂ = 1007<br>
+              IE₄ − IE₃ = 2046<br>
+              IE₅ − IE₄ = 1322<br>
+              <strong style="color:var(--accent-soft)">IE₆ − IE₅ = 15952 ← largest difference</strong>
+            </div>
+          </div>
+
+          <h4 style="margin-top:24px">Method 2: Ratios between consecutive IEs</h4>
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              IE₂ / IE₁ = 1.88<br>
+              IE₃ / IE₂ = 1.53<br>
+              IE₄ / IE₃ = 1.70<br>
+              IE₅ / IE₄ = 1.23<br>
+              <strong style="color:var(--accent-soft)">IE₆ / IE₅ = 3.54 ← largest ratio</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">Explanation</div>
+          <h4>Reading the answer</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              Sudden increase in ionisation energy from IE₅ to IE₆.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              The 6th electron is removed from the inner shell which has stable noble gas electron configuration and closer to the nucleus.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Much greater energy needed to remove the 6th electron.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Therefore, <strong>valence electrons = 5</strong>, block <strong>p</strong>, and <strong>Group 15</strong>.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Valence electronic configuration: <code>ns² np³</code>.
+            </div>
+          </div>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">The single rule to remember</div>
+          <p>
+            <strong>Number of valence electrons = position of the IE just before the drastic jump.</strong>
+            If the jump is between IE₃ and IE₄, there are 3 valence electrons → Group 2 (if s-block) or
+            Group 13 (if p-block). Use the configuration to confirm which block.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 14: Practice 3 - Part B Style -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">14</span>
+          <span class="event-name">Your Turn — Successive IE</span>
+        </div>
+        <h2 class="event-heading">Practice: PSPM Part B style</h2>
+
+        <div class="quiz" data-quiz-id="u3-practice-3">
+          <div class="quiz-label">Question 3 of 4</div>
+          <div class="quiz-question">An element in Period 3 has these IEs (kJ/mol): IE₁ = 738, IE₂ = 1450, IE₃ = 7732, IE₄ = 10539, IE₅ = 13628. What is the element?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Sodium would show the drastic jump between IE₁ and IE₂ (only 1 valence electron). Here the jump is between IE₂ and IE₃, meaning 2 valence electrons.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Sodium (Na)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. The largest difference is IE₃ − IE₂ = 6282 (the drastic jump). The 3rd electron comes from the inner shell. Valence electrons = 2, block = s, Group 2. In Period 3, Group 2 is magnesium. Full configuration: 1s² 2s² 2p⁶ 3s².')">
+              <span class="quiz-option-letter">B</span>
+              <span>Magnesium (Mg)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Aluminium has 3 valence electrons, so the drastic jump would be between IE₃ and IE₄. Here the jump is between IE₂ and IE₃, meaning only 2 valence electrons.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Aluminium (Al)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Silicon has 4 valence electrons, so the drastic jump would be between IE₄ and IE₅. The pattern shown indicates only 2 valence electrons.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Silicon (Si)</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="quiz" data-quiz-id="u3-practice-4">
+          <div class="quiz-label">Question 4 of 4</div>
+          <div class="quiz-question">An element in Period 3 has these IEs (kJ/mol): IE₁ = 999, IE₂ = 2251, IE₃ = 3361, IE₄ = 4564, IE₅ = 7013, IE₆ = 8495, IE₇ = 27106. Where is the drastic jump and what is the group?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Check the differences carefully. IE₅ − IE₄ = 2449, which is not the largest gap. The largest gap is between IE₆ and IE₇.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Jump between IE₄ and IE₅ → Group 14</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'IE₆ − IE₅ = 1482, also not the largest gap. Compare with IE₇ − IE₆ = 18611 — much bigger.')">
+              <span class="quiz-option-letter">B</span>
+              <span>Jump between IE₅ and IE₆ → Group 15</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. IE₇ − IE₆ = 18611 — by far the largest difference. The 7th electron is removed from the inner shell. Valence electrons = 6, block = p, Group 16. In Period 3, this is sulphur (S). Valence configuration: 3s² 3p⁴.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Jump between IE₆ and IE₇ → Group 16</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'There are only 7 IEs given, so we can&apos;t see beyond IE₇. The drastic jump is clearly between IE₆ and IE₇, not later.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Jump between IE₇ and IE₈ → Group 17</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 15: Summary -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">15</span>
+          <span class="event-name">Summary</span>
+        </div>
+        <h2 class="event-heading">What you should walk away with</h2>
+        <div class="event-body">
+          <p>
+            Ionisation energy is the central numerical quantity for "how tightly atoms hold their
+            electrons." Four reasoning patterns to take with you:
+          </p>
+          <ul class="takeaways">
+            <li><span class="key">DEFN</span><span>IE₁: minimum energy to remove 1 mol of e⁻ from 1 mol of gaseous atoms</span></li>
+            <li><span class="key">ACROSS</span><span>IE increases — effective nuclear charge stronger, more energy needed</span></li>
+            <li><span class="key">DOWN</span><span>IE decreases — shielding stronger, less energy needed</span></li>
+            <li><span class="key">JUMP</span><span>Drastic jump in successive IE = where you cross into a new (inner) shell</span></li>
+          </ul>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">How this shows up in PSPM</div>
+          <p>
+            <strong>Part B is mandatory for all students</strong> and almost always features a successive
+            IE table or graph. The standard task: given the IE data, deduce the group, valence configuration,
+            and full electron configuration. The PSPM mark scheme rewards the keyword sequence:
+            <em>"sudden increase from IEₙ to IEₙ₊₁ ... nth electron removed from inner shell ... stable noble gas configuration ... closer to the nucleus ... much greater energy needed."</em>
+            Use this exact language — every phrase is a mark.
+          </p>
+          <p>
+            The Al/Mg and S/P anomalies appear in Q3 of every CA set. Remember: <strong>fully filled
+            and half filled are more stable than partially filled</strong>.
+          </p>
+        </div>
+      </div>
+
     </div>
 
     <div class="unit-nav-footer">
@@ -48,6 +850,7 @@
 
 <script src="../assets/js/progress.js"></script>
 <script src="../assets/js/sidebar.js"></script>
+<script src="../assets/js/quiz.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     renderSidebar('unit-3');
