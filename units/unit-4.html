@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 4: Electronegativity & Oxides | Periodic Table SIM</title>
+<title>Unit 4: Electronegativity & Oxide Behaviour | Periodic Table SIM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 
   <aside class="sidebar" id="sidebar"></aside>
 
-  <main class="main">
+  <main class="main" data-unit-quizzes="u4-prereq-1,u4-practice-1,u4-practice-2,u4-practice-3,u4-practice-4">
 
     <div class="unit-header">
       <div class="breadcrumb">
@@ -26,16 +26,817 @@
       <div class="unit-header-grid">
         <div>
           <h1 class="unit-title">Electronegativity & <em>Oxides</em></h1>
-          <p class="unit-deck">Coming soon in v0.2.</p>
+          <p class="unit-deck">
+            The single property that explains polar bonds — and why oxides shift from basic to
+            acidic as you walk across Period 3.
+          </p>
+        </div>
+        <div class="progress-card">
+          <div class="progress-label">Your Progress</div>
+          <div class="progress-text" id="unit-progress-text">0 of 5 checkpoints complete</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="unit-progress-fill" style="width: 0%"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="unit-content">
-      <div class="callout">
-        <div class="callout-label">In Development</div>
-        <p>This unit is part of the planned build but not yet authored. The MVP focuses on validating the SIM structure with Unit 1 first.</p>
+
+      <!-- EVENT 01: Learning Outcomes -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">01</span>
+          <span class="event-name">Learning Outcomes</span>
+        </div>
+        <h2 class="event-heading">What you'll be able to do</h2>
+        <div class="callout lo">
+          <div class="callout-label">By the end of this unit</div>
+          <ul class="lo-list">
+            <li>Define <strong>electronegativity</strong>.</li>
+            <li>Explain the variation in the electronegativity of elements.</li>
+            <li>Explain the <strong>acid-base character of oxides</strong> of elements in Period 3.</li>
+            <li>Relate the acid-base character to the types of bonding (ionic or covalent).</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- EVENT 02: Before You Begin -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">02</span>
+          <span class="event-name">Before You Begin</span>
+        </div>
+        <h2 class="event-heading">A quick check on prior knowledge</h2>
+        <div class="event-body">
+          <p>
+            This unit assumes you understand the <strong>distinction between metals and nonmetals</strong>
+            in Period 3, and that you can identify ionic vs covalent bonding from electron arrangement.
+            From Unit 2, you should also know that <strong>atomic size decreases across a period</strong>
+            and <strong>increases down a group</strong> — this directly affects how strongly atoms pull
+            on electrons.
+          </p>
+        </div>
+
+        <div class="quiz" data-quiz-id="u4-prereq-1">
+          <div class="quiz-label">Quick check</div>
+          <div class="quiz-question">Which of the following Period 3 elements is a <strong>nonmetal</strong>?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Sodium (Na) is a metal — it loses electrons easily to form Na⁺. Metals are on the left of the periodic table.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Sodium (Na)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Magnesium (Mg) is a metal in Group 2. Metals are on the left side of Period 3.')">
+              <span class="quiz-option-letter">B</span>
+              <span>Magnesium (Mg)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Aluminium (Al) is technically a metal, though it shows some amphoteric behaviour. It is on the metal side of the metalloid boundary.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Aluminium (Al)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Sulphur (S) is a nonmetal in Group 16. Period 3 nonmetals (P, S, Cl, Ar) sit on the right side of the table — they tend to gain electrons rather than lose them.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Sulphur (S)</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 03: Defining Electronegativity -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">03</span>
+          <span class="event-name">Defining Electronegativity</span>
+        </div>
+        <h2 class="event-heading">What is electronegativity?</h2>
+
+        <div class="callout lo">
+          <div class="callout-label">Definition · Electronegativity</div>
+          <p>
+            The <strong>tendency for an atom to attract electrons to itself when it is
+            chemically combined with another element</strong>.
+          </p>
+        </div>
+
+        <div class="event-body">
+          <p>
+            Atoms with strong attraction for the bonding electrons have <strong>high electronegativity</strong>.
+            Consider the H–F bond as an example:
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- H atom (smaller, less electronegative) -->
+            <circle cx="180" cy="110" r="35" fill="#1B4D52" opacity="0.7"/>
+            <text x="180" y="116" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="22" font-weight="600">H</text>
+            <text x="180" y="170" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="11">δ⁺</text>
+            <text x="180" y="195" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">EN = 2.1</text>
+
+            <!-- F atom (larger, more electronegative) -->
+            <circle cx="420" cy="110" r="55" fill="#C4502E" opacity="0.85"/>
+            <text x="420" y="118" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="28" font-weight="600">F</text>
+            <text x="420" y="190" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="11">δ⁻</text>
+            <text x="420" y="215" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">EN = 4.0</text>
+
+            <!-- Bond with electrons leaning toward F -->
+            <line x1="215" y1="110" x2="365" y2="110" stroke="#0F1B1F" stroke-width="2"/>
+
+            <!-- Electron pair leaning toward F -->
+            <circle cx="340" cy="105" r="5" fill="#0E2F33"/>
+            <circle cx="355" cy="115" r="5" fill="#0E2F33"/>
+
+            <!-- Arrow showing electron pull -->
+            <defs>
+              <marker id="enarr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#C4502E"/>
+              </marker>
+            </defs>
+            <line x1="240" y1="55" x2="360" y2="55" stroke="#C4502E" stroke-width="1.5" marker-end="url(#enarr)" opacity="0.7"/>
+            <text x="300" y="40" text-anchor="middle" fill="#C4502E" font-family="JetBrains Mono" font-size="10" letter-spacing="1">electron density pulled →</text>
+          </svg>
+          <div class="diagram-caption">In H–F, electrons spend more time closer to F (higher electronegativity)</div>
+        </div>
+
+        <div class="event-body">
+          <p>
+            The electrons spend more time closer to F. F is more electronegative than H.
+            This causes the F end of the bond to be partially negative (δ⁻) and the H end
+            partially positive (δ⁺). H–F has a <strong>polar bond</strong>.
+          </p>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">The benchmark</div>
+          <p>
+            The <strong>highest electronegativity value (4.0)</strong> is assigned to fluorine.
+            All other elements are measured relative to it on the Pauling scale.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 04: Variation in Electronegativity -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">04</span>
+          <span class="event-name">Variation Trends</span>
+        </div>
+        <h2 class="event-heading">How electronegativity varies across the table</h2>
+        <div class="event-body">
+          <p>
+            Electronegativity follows the <strong>same general trend as first ionisation energy</strong> —
+            and for the same underlying reasons. The smaller the atom and the stronger the effective
+            nuclear charge, the more strongly it pulls on bonding electrons.
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="enarr2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#0F1B1F"/>
+              </marker>
+            </defs>
+
+            <!-- Period 3 row showing increasing values across -->
+            <text x="50" y="80" fill="#2A3A40" font-family="JetBrains Mono" font-size="11" letter-spacing="1">Group 1</text>
+            <text x="640" y="80" text-anchor="end" fill="#2A3A40" font-family="JetBrains Mono" font-size="11" letter-spacing="1">Group 17</text>
+
+            <!-- Increasing color intensity left to right -->
+            <rect x="50" y="100" width="80" height="60" fill="#1B4D52" opacity="0.3"/>
+            <text x="90" y="130" text-anchor="middle" fill="#0F1B1F" font-family="Fraunces" font-size="16" font-weight="600">Na</text>
+            <text x="90" y="148" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">0.9</text>
+
+            <rect x="140" y="100" width="80" height="60" fill="#1B4D52" opacity="0.45"/>
+            <text x="180" y="130" text-anchor="middle" fill="#0F1B1F" font-family="Fraunces" font-size="16" font-weight="600">Mg</text>
+            <text x="180" y="148" text-anchor="middle" fill="#2A3A40" font-family="JetBrains Mono" font-size="10">1.2</text>
+
+            <rect x="230" y="100" width="80" height="60" fill="#1B4D52" opacity="0.55"/>
+            <text x="270" y="130" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="16" font-weight="600">Al</text>
+            <text x="270" y="148" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10">1.5</text>
+
+            <rect x="320" y="100" width="80" height="60" fill="#1B4D52" opacity="0.65"/>
+            <text x="360" y="130" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="16" font-weight="600">Si</text>
+            <text x="360" y="148" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10">1.8</text>
+
+            <rect x="410" y="100" width="80" height="60" fill="#1B4D52" opacity="0.75"/>
+            <text x="450" y="130" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="16" font-weight="600">P</text>
+            <text x="450" y="148" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10">2.1</text>
+
+            <rect x="500" y="100" width="80" height="60" fill="#1B4D52" opacity="0.85"/>
+            <text x="540" y="130" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="16" font-weight="600">S</text>
+            <text x="540" y="148" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10">2.5</text>
+
+            <rect x="590" y="100" width="80" height="60" fill="#0E2F33" opacity="0.95"/>
+            <text x="630" y="130" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="16" font-weight="600">Cl</text>
+            <text x="630" y="148" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10">3.0</text>
+
+            <!-- Across arrow -->
+            <line x1="40" y1="190" x2="680" y2="190" stroke="#0F1B1F" stroke-width="1.5" marker-end="url(#enarr2)"/>
+            <text x="360" y="215" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="11" letter-spacing="2">ACROSS PERIOD → ELECTRONEGATIVITY INCREASES</text>
+
+            <!-- Down arrow -->
+            <line x1="690" y1="80" x2="690" y2="250" stroke="#0F1B1F" stroke-width="1.5" opacity="0"/>
+
+            <!-- Key insight -->
+            <text x="350" y="265" text-anchor="middle" fill="#2A3A40" font-family="Fraunces" font-style="italic" font-size="14">Nonmetals (right side) are more electronegative than metals (left side).</text>
+            <text x="350" y="290" text-anchor="middle" fill="#C4502E" font-family="JetBrains Mono" font-size="11" letter-spacing="2">F = 4.0  is the most electronegative atom</text>
+          </svg>
+          <div class="diagram-caption">Pauling electronegativity values across Period 3</div>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · Across a Period</div>
+          <h4>Why electronegativity increases from Na to Cl</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              As proton number increases, but the number of inner electrons remains the same.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <strong>Effective nuclear charge increases.</strong>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              Atomic size decreases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Attraction of nucleus toward bonding electrons stronger.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              <strong>Electronegativity increases.</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">PSPM Reasoning Chain · Down a Group</div>
+          <h4>Why electronegativity decreases down a group</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              Principal quantum number, n, increases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              Number of inner electrons increases.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <strong>Shielding effect stronger.</strong>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              Atomic size bigger.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              Attraction of nucleus toward bonding electrons weaker.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              <strong>Electronegativity decreases.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 05: Practice 1 - Ordering -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">05</span>
+          <span class="event-name">Your Turn — Ordering</span>
+        </div>
+        <h2 class="event-heading">Practice: arranging by electronegativity</h2>
+
+        <div class="quiz" data-quiz-id="u4-practice-1">
+          <div class="quiz-label">Question 1 of 4</div>
+          <div class="quiz-question">Using the periodic table only, arrange the following elements in order of <strong>increasing</strong> electronegativity: <strong>S, O, Si</strong>.</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Wrong direction. O is at the top right of the periodic table — closest to F — so O has the HIGHEST electronegativity, not the lowest.')">
+              <span class="quiz-option-letter">A</span>
+              <span>O &lt; S &lt; Si</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Si is in Period 3 Group 14, S is in Period 3 Group 16 (across same period → higher EN), and O is in Period 2 Group 16 (same group as S but higher up → even higher EN). So Si < S < O.')">
+              <span class="quiz-option-letter">B</span>
+              <span>Si &lt; S &lt; O</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'S and O are in the same group, but O is HIGHER UP — closer to F. Going down the group, electronegativity decreases. So O > S, not O < S.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Si &lt; O &lt; S</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'S is to the RIGHT of Si in Period 3, so S has higher EN than Si. The order needs Si first (lowest), not S.')">
+              <span class="quiz-option-letter">D</span>
+              <span>S &lt; Si &lt; O</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 06: Bond Type Connection -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">06</span>
+          <span class="event-name">Bond Type</span>
+        </div>
+        <h2 class="event-heading">From electronegativity to bond type</h2>
+        <div class="event-body">
+          <p>
+            Electronegativity is the bridge between atomic structure and chemical bonding.
+            The <strong>difference in electronegativity</strong> between two atoms tells you
+            what kind of bond they form:
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- Three regions -->
+            <rect x="40" y="40" width="200" height="100" fill="#1B4D52" opacity="0.85" rx="2"/>
+            <text x="140" y="75" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="18" font-weight="600">Ionic</text>
+            <line x1="70" y1="85" x2="210" y2="85" stroke="#E89B7A" stroke-width="1"/>
+            <text x="140" y="108" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">Large EN difference</text>
+            <text x="140" y="125" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10">metal + nonmetal</text>
+
+            <rect x="250" y="40" width="200" height="100" fill="#C4502E" opacity="0.85" rx="2"/>
+            <text x="350" y="75" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="18" font-weight="600">Polar Covalent</text>
+            <line x1="280" y1="85" x2="420" y2="85" stroke="#F5F1E8" stroke-width="1" opacity="0.5"/>
+            <text x="350" y="108" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">Moderate difference</text>
+            <text x="350" y="125" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10">e.g. H–F, H–O</text>
+
+            <rect x="460" y="40" width="200" height="100" fill="#B8862F" opacity="0.85" rx="2"/>
+            <text x="560" y="75" text-anchor="middle" fill="#F5F1E8" font-family="Fraunces" font-size="18" font-weight="600">Pure Covalent</text>
+            <line x1="490" y1="85" x2="630" y2="85" stroke="#F5F1E8" stroke-width="1" opacity="0.5"/>
+            <text x="560" y="108" text-anchor="middle" fill="#F5F1E8" font-family="Inter Tight" font-size="11">Same / similar EN</text>
+            <text x="560" y="125" text-anchor="middle" fill="#F5F1E8" font-family="JetBrains Mono" font-size="10">nonmetal + nonmetal</text>
+
+            <text x="350" y="175" text-anchor="middle" fill="#2A3A40" font-family="Fraunces" font-style="italic" font-size="13">Bigger electronegativity difference → more ionic character</text>
+            <text x="350" y="195" text-anchor="middle" fill="#C4502E" font-family="JetBrains Mono" font-size="10" letter-spacing="2">This is the key to predicting oxide behaviour →</text>
+          </svg>
+          <div class="diagram-caption">Electronegativity difference determines bond type</div>
+        </div>
+
+        <div class="event-body">
+          <p>
+            <strong>This is the bridge to the next big idea:</strong> the type of bond an element
+            forms with oxygen determines whether its oxide is basic, amphoteric, or acidic.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 07: Period 3 Oxides Overview -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">07</span>
+          <span class="event-name">Period 3 Oxides</span>
+        </div>
+        <h2 class="event-heading">The acid-base character of Period 3 oxides</h2>
+        <div class="event-body">
+          <p>
+            When Period 3 elements react with oxygen, the resulting oxides show a clear pattern
+            that follows electronegativity. Walking from left to right across Period 3:
+          </p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+            <!-- Gradient strip showing transition -->
+            <defs>
+              <linearGradient id="oxide-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#1B4D52" stop-opacity="0.9"/>
+                <stop offset="35%" stop-color="#1B4D52" stop-opacity="0.7"/>
+                <stop offset="45%" stop-color="#B8862F" stop-opacity="0.85"/>
+                <stop offset="55%" stop-color="#C4502E" stop-opacity="0.75"/>
+                <stop offset="100%" stop-color="#C4502E" stop-opacity="0.95"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="40" y="80" width="620" height="80" fill="url(#oxide-gradient)" rx="2"/>
+
+            <!-- Oxide labels along the strip -->
+            <g font-family="Fraunces" font-size="14" font-weight="600" fill="#F5F1E8" text-anchor="middle">
+              <text x="100" y="125">Na₂O</text>
+              <text x="170" y="125">MgO</text>
+              <text x="245" y="125">Al₂O₃</text>
+              <text x="320" y="125">SiO₂</text>
+              <text x="400" y="125">P₄O₁₀</text>
+              <text x="475" y="125">SO₃</text>
+              <text x="550" y="125">Cl₂O₇</text>
+            </g>
+
+            <!-- Labels above -->
+            <text x="135" y="65" text-anchor="middle" fill="#1B4D52" font-family="JetBrains Mono" font-size="11" letter-spacing="2" font-weight="600">BASIC</text>
+            <text x="285" y="65" text-anchor="middle" fill="#B8862F" font-family="JetBrains Mono" font-size="11" letter-spacing="2" font-weight="600">AMPHOTERIC</text>
+            <text x="475" y="65" text-anchor="middle" fill="#C4502E" font-family="JetBrains Mono" font-size="11" letter-spacing="2" font-weight="600">ACIDIC</text>
+
+            <!-- Bond type labels below -->
+            <text x="135" y="190" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="10" letter-spacing="1">ionic bonding</text>
+            <text x="285" y="190" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="10" letter-spacing="1">intermediate</text>
+            <text x="475" y="190" text-anchor="middle" fill="#0F1B1F" font-family="JetBrains Mono" font-size="10" letter-spacing="1">covalent bonding</text>
+
+            <text x="350" y="220" text-anchor="middle" fill="#2A3A40" font-family="Fraunces" font-style="italic" font-size="13">From metal (left) to nonmetal (right) — oxides transform basic → amphoteric → acidic</text>
+          </svg>
+          <div class="diagram-caption">Acid-base character of Period 3 oxides — the transition from basic to acidic</div>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">The three-part pattern</div>
+          <p>
+            When Period 3 elements react with oxygen: <strong>metals form basic oxides</strong>,
+            <strong>nonmetals form acidic oxides</strong>, and <strong>some metals and metalloids
+            form amphoteric oxides</strong> (showing both acidic and basic behaviour).
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 08: Basic Oxides -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">08</span>
+          <span class="event-name">Basic Oxides</span>
+        </div>
+        <h2 class="event-heading">Metal oxides — ionic and basic</h2>
+        <div class="event-body">
+          <p>
+            Na₂O and MgO are metal oxides. They are <strong>ionic compounds</strong> because the
+            large electronegativity difference between metal and oxygen leads to electron transfer.
+            In water, they act as bases — producing metal hydroxide and reacting with acids to form
+            salt and water.
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">Basic Oxide Reactions</div>
+          <h4>Na₂O and MgO</h4>
+
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              <strong>Na₂O reacts with water:</strong><br>
+              Na₂O(s) + H₂O(l) → 2NaOH(aq)<br>
+              <em>basic oxide → base</em>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              <strong>MgO reacts with acid:</strong><br>
+              MgO(s) + 2HCl(aq) → MgCl₂(aq) + H₂O(l)<br>
+              <em>basic oxide → salt + water</em>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 09: Amphoteric Oxides -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">09</span>
+          <span class="event-name">Amphoteric Oxides</span>
+        </div>
+        <h2 class="event-heading">Aluminium oxide — both acidic and basic</h2>
+        <div class="event-body">
+          <p>
+            Al₂O₃ is the classic amphoteric oxide — it can <strong>react with both acid and base</strong>.
+            This dual behaviour reflects aluminium's position at the borderline between metals and
+            nonmetals. Al₂O₃ has bonding that's intermediate between ionic and covalent.
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">Amphoteric Oxide Reactions · Al₂O₃</div>
+          <h4>Both equations needed for full marks</h4>
+
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              <strong>With acid (HCl) — acts as a base:</strong><br>
+              Al₂O₃(s) + 6HCl(aq) → 2AlCl₃(aq) + 3H₂O(l)<br>
+              <em>amphoteric oxide reacting with acid → salt + water</em>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              <strong>With base (NaOH) — acts as an acid:</strong><br>
+              Al₂O₃(s) + 2NaOH(aq) → 2NaAlO₂(aq) + H₂O(l)<br>
+              <em>amphoteric oxide reacting with base → sodium aluminate + water</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">PSPM trap</div>
+          <p>
+            When asked about Al₂O₃, you must write <strong>both</strong> reactions — with acid AND
+            with base. Writing only one earns only half the marks. The mark scheme specifically
+            checks that students demonstrate understanding of <em>amphoteric</em> behaviour, which
+            requires showing both directions.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 10: Practice 2 - Identifying Oxide Type -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">10</span>
+          <span class="event-name">Your Turn — Oxide Type</span>
+        </div>
+        <h2 class="event-heading">Practice: classify the oxide</h2>
+
+        <div class="quiz" data-quiz-id="u4-practice-2">
+          <div class="quiz-label">Question 2 of 4</div>
+          <div class="quiz-question">Which of these Period 3 oxides reacts with both HCl and NaOH?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Na₂O is a basic oxide. It reacts with acids (like HCl) but NOT with bases (like NaOH) because both Na₂O and NaOH are basic.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Na₂O</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'MgO is a basic oxide. It reacts with acids but not with bases. Magnesium is firmly a metal, so its oxide is purely basic, not amphoteric.')">
+              <span class="quiz-option-letter">B</span>
+              <span>MgO</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Al₂O₃ is amphoteric — it reacts with HCl as a base (Al₂O₃ + 6HCl → 2AlCl₃ + 3H₂O) and with NaOH as an acid (Al₂O₃ + 2NaOH → 2NaAlO₂ + H₂O). Aluminium sits at the metal-nonmetal borderline.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Al₂O₃</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'SO₃ is an acidic oxide. It reacts with water to form H₂SO₄ and with bases — but NOT with acids like HCl (acid does not react with acid).')">
+              <span class="quiz-option-letter">D</span>
+              <span>SO₃</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 11: Acidic Oxides -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">11</span>
+          <span class="event-name">Acidic Oxides</span>
+        </div>
+        <h2 class="event-heading">Nonmetal oxides — covalent and acidic</h2>
+        <div class="event-body">
+          <p>
+            SiO₂, P₄O₁₀, SO₃, and Cl₂O₇ are nonmetal oxides. They are <strong>covalent compounds</strong>
+            because the electronegativity difference between nonmetal and oxygen is small. In water,
+            they act as acids — producing H⁺ ions and reacting with bases to form salt and water.
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">Acidic Oxide Reactions</div>
+          <h4>Nonmetal oxides + water → acids</h4>
+
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              <strong>SO₃ + water:</strong><br>
+              SO₃(g) + H₂O(l) → H₂SO₄(aq)<br>
+              <em>acidic oxide → sulphuric acid</em>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              <strong>P₄O₁₀ + water:</strong><br>
+              P₄O₁₀(s) + 6H₂O(l) → 4H₃PO₄(aq)<br>
+              <em>acidic oxide → phosphoric acid</em>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">→</div>
+            <div class="step-content">
+              <strong>Cl₂O₇ + water:</strong><br>
+              Cl₂O₇(s) + H₂O(l) → 2HClO₄(aq)<br>
+              <em>acidic oxide → perchloric acid</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">Note on SiO₂</div>
+          <p>
+            SiO₂ is an acidic oxide but it is <strong>insoluble in water</strong>. It does not react
+            with water directly, but it does react with strong bases — confirming its acidic nature.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 12: Why the Pattern? -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">12</span>
+          <span class="event-name">Linking Bonding to Behaviour</span>
+        </div>
+        <h2 class="event-heading">Why the transition basic → amphoteric → acidic?</h2>
+        <div class="event-body">
+          <p>
+            The pattern across Period 3 is not arbitrary — it follows directly from
+            <strong>electronegativity difference between the element and oxygen</strong>:
+          </p>
+        </div>
+
+        <div class="worked-example">
+          <div class="worked-example-label">The Reasoning Chain · Why oxides change character</div>
+          <h4>From metal to nonmetal, bonding changes — and so does acid-base behaviour</h4>
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <strong>Left side (Na, Mg):</strong> Low electronegativity. Large electronegativity difference with oxygen → <strong>ionic bonding</strong> → metal oxides → <strong>basic</strong>.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <strong>Middle (Al):</strong> Intermediate electronegativity. Moderate electronegativity difference with oxygen → <strong>intermediate bonding</strong> (partly ionic, partly covalent) → <strong>amphoteric</strong>.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <strong>Right side (Si, P, S, Cl):</strong> High electronegativity. Small electronegativity difference with oxygen → <strong>covalent bonding</strong> → nonmetal oxides → <strong>acidic</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">The full PSPM answer</div>
+          <p>
+            When asked to "explain the acid-base character of Period 3 oxides," your answer must
+            <strong>link bonding type to acid-base behaviour</strong>. Don't just list which oxides
+            are basic and which are acidic — explain <em>why</em> using the electronegativity →
+            bond type → oxide character chain. This is what earns full marks.
+          </p>
+        </div>
+      </div>
+
+      <!-- EVENT 13: Practice 3 - Equation Writing -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">13</span>
+          <span class="event-name">Your Turn — Equations</span>
+        </div>
+        <h2 class="event-heading">Practice: writing oxide equations</h2>
+
+        <div class="quiz" data-quiz-id="u4-practice-3">
+          <div class="quiz-label">Question 3 of 4</div>
+          <div class="quiz-question">Which is the correct balanced equation for the reaction of <strong>P₄O₁₀</strong> with water?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Not balanced. The left side has 4 P atoms but the right side has only 1 P. Check the coefficients carefully — P₄O₁₀ contains 4 phosphorus atoms.')">
+              <span class="quiz-option-letter">A</span>
+              <span>P₄O₁₀ + H₂O → H₃PO₄</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. P₄O₁₀(s) + 6H₂O(l) → 4H₃PO₄(aq). Check: 4 P atoms both sides; 10 + 6 = 16 O atoms = 4 × 4 O atoms; 12 H = 12 H ✓. This is the standard PSPM equation for phosphorus(V) oxide reacting with water.')">
+              <span class="quiz-option-letter">B</span>
+              <span>P₄O₁₀ + 6H₂O → 4H₃PO₄</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Phosphoric acid is H₃PO₄, not H₂PO₄. The formula H₂PO₄ does not exist as a neutral compound.')">
+              <span class="quiz-option-letter">C</span>
+              <span>P₄O₁₀ + 4H₂O → 2H₂PO₄</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Phosphorus pentoxide is P₂O₅ in its simplest form but actually exists as P₄O₁₀. The equation as written has wrong coefficient on H₃PO₄.')">
+              <span class="quiz-option-letter">D</span>
+              <span>P₄O₁₀ + 3H₂O → 2H₃PO₄</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 14: Practice 4 - Full Application -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">14</span>
+          <span class="event-name">Your Turn — Full Application</span>
+        </div>
+        <h2 class="event-heading">Practice: tying it all together</h2>
+
+        <div class="quiz" data-quiz-id="u4-practice-4">
+          <div class="quiz-label">Question 4 of 4</div>
+          <div class="quiz-question">Why does the acid-base character of Period 3 oxides change from <strong>basic to acidic</strong> as you move from Na to Cl?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Atomic size does decrease across the period, but this alone doesn&apos;t directly explain the acid-base shift. The key is how electronegativity affects BONDING with oxygen.')">
+              <span class="quiz-option-letter">A</span>
+              <span>Because atomic size decreases across the period</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Ionisation energy increases across the period, but the acid-base behaviour is more directly connected to bond type with oxygen — which depends on electronegativity, not IE.')">
+              <span class="quiz-option-letter">B</span>
+              <span>Because ionisation energy increases across the period</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, true, 'Correct. Electronegativity increases across the period. The EN difference between the element and oxygen decreases. Bond type changes from ionic (metal + O, large EN difference) to covalent (nonmetal + O, small EN difference). Ionic oxides are basic; covalent oxides are acidic; the borderline (Al₂O₃) is amphoteric.')">
+              <span class="quiz-option-letter">C</span>
+              <span>Because electronegativity increases, changing the bonding from ionic (basic) to covalent (acidic)</span>
+            </button>
+            <button class="quiz-option" onclick="answerQuiz(this, false, 'Shielding doesn&apos;t change significantly across a period (inner electrons stay the same). The mechanism here is about bonding type with oxygen, not shielding.')">
+              <span class="quiz-option-letter">D</span>
+              <span>Because the shielding effect changes across the period</span>
+            </button>
+          </div>
+          <div class="quiz-feedback">
+            <div class="quiz-feedback-label">Feedback</div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 15: Summary -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">15</span>
+          <span class="event-name">Summary</span>
+        </div>
+        <h2 class="event-heading">What you should walk away with</h2>
+        <div class="event-body">
+          <p>
+            You've now connected three layers of periodic table theory — atomic structure,
+            electronegativity, and chemical behaviour. The big takeaways:
+          </p>
+          <ul class="takeaways">
+            <li><span class="key">DEFN</span><span>Electronegativity: tendency of atom to attract bonding electrons</span></li>
+            <li><span class="key">TREND</span><span>Increases across, decreases down — same logic as IE</span></li>
+            <li><span class="key">BOND</span><span>Big EN difference → ionic; small EN difference → covalent</span></li>
+            <li><span class="key">OXIDE</span><span>Basic (metal) → Amphoteric (Al₂O₃) → Acidic (nonmetal)</span></li>
+          </ul>
+        </div>
+
+        <div class="callout pspm">
+          <div class="callout-label">How this shows up in PSPM</div>
+          <p>
+            Q3 of every CA set asks you to <strong>predict</strong> the acid-base character of given
+            oxides, <strong>write balanced equations</strong> for their reactions with water (or with
+            acid/base for amphoteric Al₂O₃), and <strong>explain</strong> the pattern across Period 3
+            using electronegativity and bonding. The mark scheme rewards the full reasoning chain:
+            <em>"electronegativity increases → EN difference with O decreases → bond type changes from
+            ionic to covalent → oxide character changes from basic to acidic, with Al₂O₃ amphoteric at the borderline."</em>
+          </p>
+          <p>
+            <strong>Always write both equations for Al₂O₃</strong> — with acid AND with base — when
+            asked to demonstrate amphoteric behaviour.
+          </p>
+        </div>
+      </div>
+
+      <!-- COURSE COMPLETION CALLOUT -->
+      <div class="event-block">
+        <div class="event-stamp">
+          <span class="event-num">★</span>
+          <span class="event-name">Topic 3 Complete</span>
+        </div>
+        <h2 class="event-heading">You've finished the Periodic Table module</h2>
+        <div class="event-body">
+          <p>
+            From electron configurations (Unit 1) to atomic and ionic sizes (Unit 2), through
+            ionisation energy and successive IE deduction (Unit 3), and now electronegativity and
+            oxide behaviour (Unit 4) — you've built up a complete picture of how atomic structure
+            predicts chemical behaviour.
+          </p>
+          <p>
+            <strong>What's next?</strong> Apply this in your CA assignment. The four units map
+            directly onto the four-question structure of every CA set, with Part B (mandatory) drawing
+            heavily on Unit 3's successive IE skills. Use the PSPM reasoning chains from each unit —
+            they are the keyword sequences the marker is looking for.
+          </p>
+        </div>
+      </div>
+
     </div>
 
     <div class="unit-nav-footer">
@@ -48,6 +849,7 @@
 
 <script src="../assets/js/progress.js"></script>
 <script src="../assets/js/sidebar.js"></script>
+<script src="../assets/js/quiz.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     renderSidebar('unit-4');
